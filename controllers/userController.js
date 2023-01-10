@@ -21,8 +21,7 @@ module.exports = {
 
                 // Find if the user exists
                 const userExist = await User.findOne({
-                    email,
-                    password
+                    email
                 })
 
                 if (userExist) {
@@ -69,6 +68,7 @@ module.exports = {
     //@route /api/users/login
     loginUsers: async (req, res) => {
         try {
+            const {email, password} = req.body
 
             res.status(201).json({
                 message: "login user succefully"
