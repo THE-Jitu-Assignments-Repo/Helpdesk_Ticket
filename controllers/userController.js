@@ -49,7 +49,7 @@ module.exports = {
                         email: user.email,
                         message: "registered succefully"
                     })
-                }else{
+                } else {
                     res.status(400).json({
                         message: "Invalid data"
                     })
@@ -68,11 +68,29 @@ module.exports = {
     //@route /api/users/login
     loginUsers: async (req, res) => {
         try {
-            const {email, password} = req.body
+            const {
+                email,
+                password
+            } = req.body
 
-            res.status(201).json({
-                message: "login user succefully"
+            const user = await User.findOne({
+                email
             })
+
+            if (user && (await bcrypt.compare( password, user.password))) {
+
+                res.status(200).json({
+                    _id: user._id,
+                    name: user.username,
+                    email: user.email,
+                    message: "login user succefully"
+                })
+            }else{
+                res.status(400).json({
+                    message: "Invalid credentials"
+                })
+            }
+
 
         } catch (error) {
             res.status(401).json({
