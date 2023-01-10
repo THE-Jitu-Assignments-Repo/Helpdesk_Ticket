@@ -1,6 +1,7 @@
 const dotenv = require('dotenv').config()
 const bcrypt = require('bcrypt')
 const User = require('../models/userModel')
+const jwt = require('jsonwebtoken')
 
 module.exports = {
     //@route /api/users
@@ -77,15 +78,24 @@ module.exports = {
                 email
             })
 
-            if (user && (await bcrypt.compare( password, user.password))) {
+            if (user && (await bcrypt.compare(password, user.password))) {
+
+                const token = jwt.sign({
+                    _id: user._id,
+                    name: user.username,
+                    email: user.email
+                }, process.env.SECRET, {
+                    expiresIn: "24hrs"
+                })
 
                 res.status(200).json({
                     _id: user._id,
                     name: user.username,
                     email: user.email,
-                    message: "login user succefully"
+                    Token: token,
+                     message: "login user succefully"
                 })
-            }else{
+            } else {
                 res.status(400).json({
                     message: "Invalid credentials"
                 })
