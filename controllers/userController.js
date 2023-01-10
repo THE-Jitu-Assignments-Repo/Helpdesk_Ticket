@@ -27,8 +27,9 @@ module.exports = {
         } catch (error) {
             res.status(401).json({
                 message: error.message,
-                stack: error.stack
+                stack: process.env.Node_env === 'production' ? null : error.stack
             })
+            // console.log(process.env.Node_env);
         }
     },
 
