@@ -45,9 +45,6 @@ module.exports = {
 
                 if (user) {
                     res.status(201).json({
-                        _id: user._id,
-                        name: user.username,
-                        email: user.email,
                         message: "registered succefully"
                     })
                 } else {
@@ -89,9 +86,6 @@ module.exports = {
                 })
 
                 res.status(200).json({
-                    _id: user._id,
-                    name: user.username,
-                    email: user.email,
                     Token: token,
                      message: "login user succefully"
                 })
@@ -107,6 +101,14 @@ module.exports = {
                 message: error.message
             })
 
+        }
+    },
+    getUserDetails: async(req,res)=>{
+        try {
+            const {name,email} = req.info
+            res.status(201).json({name,email})
+        } catch (error) {
+            res.status(401).json({message: error.message})
         }
     }
 }
