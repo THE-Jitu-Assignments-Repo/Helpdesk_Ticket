@@ -105,8 +105,8 @@ module.exports = {
     },
     getUserDetails: async(req,res)=>{
         try {
-            const {name,email} = req.info
-            res.status(201).json({name,email})
+            const {id,name,email} = req.info
+            res.status(201).json({id,name,email})
         } catch (error) {
             res.status(401).json({message: error.message})
         }
