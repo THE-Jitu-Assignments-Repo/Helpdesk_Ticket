@@ -1,7 +1,12 @@
 const express = require('express')
+const colors = require('colors')
 const dotenv = require('dotenv')
 const userRoutes = require('./routes/userRouters')
-const {errorHandler} = require('./middleware/Helper/errorHandler')
+// const {errorHandler} = require('./middleware/Helper/errorHandler')
+const {connectDB} = require('./config/db')
+
+//conection to DB
+connectDB()
 
 dotenv.config()
 const app = express()
