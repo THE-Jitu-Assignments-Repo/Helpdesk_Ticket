@@ -1,3 +1,5 @@
+const dotenv = require('dotenv').config()
+
 module.exports = {
     //@route /api/users
     registerUsers: async (req, res) => {
@@ -10,9 +12,11 @@ module.exports = {
 
             //@validation
             if (!username || !email || !passsword) {
-                res.status(400).json({
-                    message: "Please include all the empty fields"
-                })
+                // res.status(400).json({
+                //     message: "Please include all the empty fields"
+                // })
+                res.status(400)
+                throw new Error("Please include all the empty fields")
             } else {
 
                 res.status(201).json({
@@ -22,7 +26,8 @@ module.exports = {
 
         } catch (error) {
             res.status(401).json({
-                message: error.message
+                message: error.message,
+                stack: error.stack
             })
         }
     },
