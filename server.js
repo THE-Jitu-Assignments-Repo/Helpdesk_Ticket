@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRouters')
 const {connectDB} = require('./config/db')
 
 //conection to DB
-// connectDB()
+connectDB()
 
 dotenv.config()
 const app = express()

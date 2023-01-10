@@ -33,7 +33,7 @@ module.exports = {
 
                 // Hash password
 
-                const hashedPassword = await bcrypt.hash(password, process.env.SALT)
+                const hashedPassword = await bcrypt.hash(password, 10)
 
 
                 // Create user
