@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { FaHandPointRight, FaUser } from "react-icons/fa";
+import { FaHandPointRight, FaUser, FaWindowClose } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./register.css";
 
 function Register() {
+  const [err, setErr]=useState('')
   const [regData, setRegData] = useState({
     username: "",
     email: "",
@@ -13,18 +14,27 @@ function Register() {
   });
   const { username, email, password, confirmed_password } = regData;
 
+
   const handleChange = (e) => {
     let {name, value} = e.target;
     setRegData((prev) => ({ ...prev, [name]: value }));
+    setErr('')
   };
 
+  const registerUser=(e)=>{
+    e.preventDefault()
+    if(password !== confirmed_password){
+      setErr('Passwords do not match!')
+    }
+  }
 
   return (
     <div className="register">
       <FaUser size={40} />
       <span>Register to HelpDesk Tickets</span>
 
-      <form className="form">
+      <form className="form" onSubmit={registerUser}>
+        {err? <span style={{color:'red', display:'flex', alignItems:'center', gap:'4px'}}><FaWindowClose /> {err}</span>: ''}
         <input
           type="text"
           name="username"
