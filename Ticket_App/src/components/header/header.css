@@ -1,0 +1,33 @@
+.header {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 8px 0px 5px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 60px;
+}
+.header_tag{
+    font-size: 14px;
+    /* font-weight: 500; */
+}
+
+.links {
+  /* list-style: none; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 2px solid green; */
+}
+.links li {
+  margin-left: 20px;
+}
+.links li a {
+  display: flex;
+  align-items: center;
+  /* border: 2px solid red; */
+  gap: 3px;
+}
+.links li a:hover {
+  color: #777;
+}

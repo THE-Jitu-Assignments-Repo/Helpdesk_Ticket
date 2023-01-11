@@ -1,9 +1,12 @@
 import React from 'react'
-import { Routes, Route} from 'react-router-dom'
+import Header from '../components/header/Header'
+// import { Routes, Route} from 'react-router-dom'
 
 function Routers() {
   return (
-    <div>Routers</div>
+    <div>
+        <Header />
+    </div>
   )
 }
 
