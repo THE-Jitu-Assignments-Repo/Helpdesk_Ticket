@@ -1,8 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Header from '../header/Header'
 
 function Index() {
   return (
-    <div>Index</div>
+    <div>
+        <Header />
+        <Outlet />
+    </div>
   )
 }
 
