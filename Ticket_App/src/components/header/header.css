@@ -7,9 +7,9 @@
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
 }
-.header_tag{
-    font-size: 14px;
-    /* font-weight: 500; */
+.header_tag {
+  font-size: 14px;
+  /* font-weight: 500; */
 }
 
 .links {
@@ -30,4 +30,5 @@
 }
 .links li a:hover {
   color: #777;
+  cursor: pointer;
 }
