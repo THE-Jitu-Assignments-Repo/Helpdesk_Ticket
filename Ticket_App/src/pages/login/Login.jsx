@@ -1,4 +1,5 @@
 import React from "react";
+import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./login.css";
 
@@ -14,7 +15,7 @@ function Login() {
           <button className="btn">Sign in</button>
         </div>
         <span className="reg_link">
-          <Link to="/register">Already have an Account!</Link>
+          <Link to="/register"><FaHandPointRight className="handme"/>Don't have an Account!</Link>
         </span>
       </form>
     </div>

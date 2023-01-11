@@ -72,3 +72,57 @@ h3 {
   font-weight: 600;
   margin-bottom: 10px;
 }
+
+.form {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  /* border: 2px solid red; */
+}
+.form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  color: #000;
+}
+.btn {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover {
+  transform: scale(0.98);
+}
+.reg_link{
+    cursor: pointer;
+    display: flex;
+   
+}
+.reg_link:hover{
+    text-decoration-line: underline;
+}
+
+.handme{
+    padding-top: 2px;
+    margin-right: 8px;
+    transform: scale(1);
+}
+.handme:hover{
+    transform: scale(2);
+}
