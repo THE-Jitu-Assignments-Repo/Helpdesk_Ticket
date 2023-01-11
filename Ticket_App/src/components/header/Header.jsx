@@ -13,20 +13,16 @@ function Header() {
       </div>
       <ul className="links">
         <li>
-          <a>
-            <Link to="login">   
-              {" "}
-              <FaSignInAlt />
-              Login
-            </Link>
-          </a>
+          <Link to="login">
+            {" "}
+            <FaSignInAlt />
+            Login
+          </Link>
         </li>
         <li>
-          <a>
-            <Link to="register">
-              <FaUser /> Register
-            </Link>
-          </a>
+          <Link to="register">
+            <FaUser /> Register
+          </Link>
         </li>
       </ul>
     </div>
