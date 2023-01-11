@@ -1,11 +1,16 @@
 import React from "react";
-import { FaHandPointRight } from "react-icons/fa";
+import { useState } from "react";
+import { FaHandPointRight, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./register.css";
 
 function Register() {
+  const [regData, setRegData] = useState({username: '', email: '', password: '', confirmed_password: ''})
+
+
   return (
     <div className="register">
+      <FaUser size={40}/>
       <span>Register to HelpDesk Tickets</span>
 
       <form className="form">

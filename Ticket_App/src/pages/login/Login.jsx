@@ -1,11 +1,12 @@
 import React from "react";
-import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa";
+import { FaHandPointLeft, FaHandPointRight, FaUser, FaUserAlt, FaUserLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./login.css";
 
 function Login() {
   return (
     <div className="login">
+      <FaUserLock size={50}/>
       <span>Login to HelpDesk Tickets</span>
 
       <form className="form">
