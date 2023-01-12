@@ -86,6 +86,9 @@ module.exports = {
                 })
 
                 res.status(200).json({
+                    id: user._id,
+                    name: user.username,
+                    email: user.email,
                     Token: token,
                      message: "login user succefully"
                 })
