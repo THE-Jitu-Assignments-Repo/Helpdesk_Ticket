@@ -23,10 +23,22 @@ export const loginUser = createAsyncThunk(
             // console.log(loginDetails);
             const response = await axios.post('http://localhost:3002/api/users/login',loginDetails)
 
-            
+
             return response.data
         } catch (error) {
             return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())        
+        }
+    }
+)
+
+export const logoutUser = createAsyncThunk(
+    "authUser/logoutUser",
+    async()=>{
+        try {
+            const response = await localStorage.removeItem('user')
+            return response
+        } catch (error) {
+            return error.message
         }
     }
 )

@@ -3,11 +3,14 @@ import {
 } from "@reduxjs/toolkit";
 import {
     loginUser,
+    logoutUser,
     RegisterUser
 } from "./authActions";
 
+const user = localStorage.getItem('user')
+
 const initialState = {
-    user: false,
+    user: user? user:null,
     token: null,
     isError: null,
     isSuccess: false,
@@ -37,8 +40,8 @@ export const authSlice = createSlice({
                 state.isSuccess = true
             }),
             builder.addCase(loginUser.fulfilled, (state, action) => {
-                state.token = localStorage.setItem('token', action.payload.token)
-                state.user = true
+                state.token = localStorage.setItem('token', action.payload.Token)
+                state.user = localStorage.setItem('user', action.payload)
             }),
             builder.addCase(RegisterUser.rejected, (state, action) => {
                 state.isLoading = false
@@ -47,6 +50,10 @@ export const authSlice = createSlice({
             }),
             builder.addCase(loginUser.rejected, (state, action) => {
                 state.message = action.payload
+                state.user=null
+            }),
+            builder.addCase(logoutUser.fulfilled, (state,action)=>{
+                state.user=null
             })
     }
 })
