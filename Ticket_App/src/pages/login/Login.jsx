@@ -30,6 +30,8 @@ function Login() {
       ...prev,
       [name]: value,
     }));
+    // dispatch(reset())
+    setErr('')
   };
 
   const submitLogin = (e) => {

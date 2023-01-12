@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { reset } from "../../features/Auth/authSlice";
 import "./header.css";
 
 function Header() {
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function Header() {
         </Link>
       </div>
       <ul className="links">
-        {user ? (
+        {user ||  token ? (
           <li>
             <button className="btn" onClick={handleLogout}>
               <FaSignOutAlt />

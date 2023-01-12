@@ -7,10 +7,10 @@ import {
     RegisterUser
 } from "./authActions";
 
-const user = localStorage.getItem('user')
+const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
-    user: user? user:null,
+    user: user ? user : null,
     token: null,
     isError: null,
     isSuccess: false,
@@ -25,10 +25,10 @@ export const authSlice = createSlice({
     reducers: {
         reset: (state) => {
             state.isError = false,
-            state.isError = false,
-            state.isLoading = false,
-            state.isSuccess = false,
-            state.message = ''
+                state.isError = false,
+                state.isLoading = false,
+                state.isSuccess = false,
+                state.message = ''
         }
     },
     extraReducers: (builder) => {
@@ -49,19 +49,25 @@ export const authSlice = createSlice({
             }),
             builder.addCase(loginUser.fulfilled, (state, action) => {
                 state.token = localStorage.setItem('token', action.payload.Token)
-                state.user = localStorage.setItem('user', action.payload)
+                state.user = localStorage.setItem('user', JSON.stringify(action.payload))
+                state.isLoading = false
+                state.isSuccess = true
             }),
             builder.addCase(loginUser.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
                 state.message = action.payload
-                state.user=null
+                state.user = null
             }),
-            builder.addCase(logoutUser.fulfilled, (state,action)=>{
-                state.user=null
+            builder.addCase(logoutUser.fulfilled, (state, action) => {
+                state.user = null
             })
     }
 })
 
 
-export const {reset}  = authSlice.actions
+export const {
+    reset
+} = authSlice.actions
 
 export default authSlice.reducer
