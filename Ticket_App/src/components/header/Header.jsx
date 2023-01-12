@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../features/Auth/authActions";
 import { reset } from "../../features/Auth/authSlice";
 import "./header.css";
+import decode from 'jwt-decode'
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
@@ -16,7 +17,16 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
+useEffect(() => {
 
+    if (user) {
+      const decodedJwt = decode(user.Token);
+
+      if (decodedJwt.exp * 1000 < Date.now()) {
+        dispatch(logoutUser())
+      }
+    }
+  }, []);
 
   return (
     <div className="header">
