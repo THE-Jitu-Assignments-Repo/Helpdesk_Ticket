@@ -7,7 +7,7 @@ import { reset } from "../../features/Auth/authSlice";
 import "./header.css";
 
 function Header() {
-  const { user, token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,6 +16,8 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
+
+
   return (
     <div className="header">
       <div className="header_tag">
@@ -24,7 +26,7 @@ function Header() {
         </Link>
       </div>
       <ul className="links">
-        {user ||  token ? (
+        {user ? (
           <li>
             <button className="btn" onClick={handleLogout}>
               <FaSignOutAlt />

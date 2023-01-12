@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
             // console.log(loginDetails);
             const response = await axios.post('http://localhost:3002/api/users/login',loginDetails)
 
-
+            localStorage.setItem('user', JSON.stringify(response.data))
             return response.data
         } catch (error) {
             return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())        

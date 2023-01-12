@@ -48,8 +48,8 @@ export const authSlice = createSlice({
                 state.isLoading = true
             }),
             builder.addCase(loginUser.fulfilled, (state, action) => {
-                state.token = localStorage.setItem('token', action.payload.Token)
-                state.user = localStorage.setItem('user', JSON.stringify(action.payload))
+                // state.token = localStorage.setItem('token', action.payload.Token)
+                state.user = action.payload
                 state.isLoading = false
                 state.isSuccess = true
             }),
