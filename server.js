@@ -2,6 +2,7 @@ const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv')
 const userRoutes = require('./routes/userRouters')
+const cors = require('cors')
 // const {errorHandler} = require('./middleware/Helper/errorHandler')
 const {connectDB} = require('./config/db')
 
@@ -10,6 +11,7 @@ connectDB()
 
 dotenv.config()
 const app = express()
+app.use(cors())
 app.use(express.json())// to allow sending of data in raw json format
 app.use(express.urlencoded({extended: false})) //to accept url encoded form 
 // app.use(errorHandler)
