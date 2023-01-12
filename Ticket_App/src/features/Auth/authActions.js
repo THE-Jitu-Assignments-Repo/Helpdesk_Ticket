@@ -10,7 +10,7 @@ export const RegisterUser = createAsyncThunk(
 
             return response.data            
         } catch (error) {
-            return rejectWithValue(error.response ? error.response.data.message : error.message)
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
         }
 
     }
@@ -22,9 +22,11 @@ export const loginUser = createAsyncThunk(
         try {
             // console.log(loginDetails);
             const response = await axios.post('http://localhost:3002/api/users/login',loginDetails)
+
+            
             return response.data
         } catch (error) {
-            return rejectWithValue(error.response ? error.response.data.message : error.message)        
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())        
         }
     }
 )

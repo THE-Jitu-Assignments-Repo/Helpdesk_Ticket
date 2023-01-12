@@ -1,14 +1,17 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { FaHandPointRight, FaUser, FaWindowClose } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterUser } from "../../features/Auth/authActions";
+import { reset } from "../../features/Auth/authSlice";
 import "./register.css";
 
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {user, isLoading, isSuccess, message} = useSelector(state=>state.auth)
   const [err, setErr]=useState('')
   const [regData, setRegData] = useState({
     username: "",
@@ -31,8 +34,17 @@ function Register() {
       setErr('Passwords do not match!')
     }
     dispatch(RegisterUser({username,email,password}))
-    navigate('/login')
   }
+  
+  useEffect(()=>{
+    if(isError){
+      setErr(message)
+    }
+    if(isSuccess || user){
+      navigate('/login')
+    }
+    dispatch(reset())
+  }, [isSuccess, user, isError, message, navigate, dispatch])
 
   return (
     <div className="register">
