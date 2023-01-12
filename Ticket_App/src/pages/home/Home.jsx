@@ -16,7 +16,7 @@ function Home() {
         Create New Ticket
       </Link>
       <Link className="btn btn-block">
-        <FaTicketAlt /> View my Ticket
+        <FaTicketAlt /> View my Tickets
       </Link>
     </div>
   );
