@@ -1,10 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { FaHandPointRight, FaUser, FaWindowClose } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { RegisterUser } from "../../features/Auth/authActions";
 import "./register.css";
 
 function Register() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [err, setErr]=useState('')
   const [regData, setRegData] = useState({
     username: "",
@@ -26,6 +30,8 @@ function Register() {
     if(password !== confirmed_password){
       setErr('Passwords do not match!')
     }
+    dispatch(RegisterUser({username,email,password}))
+    navigate('/login')
   }
 
   return (
