@@ -11,7 +11,7 @@ import "./register.css";
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {user, isLoading, isSuccess, message} = useSelector(state=>state.auth)
+  const {isError, isLoading, isSuccess, message} = useSelector(state=>state.auth)
   const [err, setErr]=useState('')
   const [regData, setRegData] = useState({
     username: "",
@@ -40,11 +40,11 @@ function Register() {
     if(isError){
       setErr(message)
     }
-    if(isSuccess || user){
+    if(isSuccess){
       navigate('/login')
     }
     dispatch(reset())
-  }, [isSuccess, user, isError, message, navigate, dispatch])
+  }, [isSuccess, isError, message, navigate, dispatch])
 
   return (
     <div className="register">
