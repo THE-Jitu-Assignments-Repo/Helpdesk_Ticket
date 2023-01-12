@@ -39,14 +39,17 @@ export const authSlice = createSlice({
                 state.isLoading = false
                 state.isSuccess = true
             }),
-            builder.addCase(loginUser.fulfilled, (state, action) => {
-                state.token = localStorage.setItem('token', action.payload.Token)
-                state.user = localStorage.setItem('user', action.payload)
-            }),
             builder.addCase(RegisterUser.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+            }),
+            builder.addCase(loginUser.pending, (state, action) => {
+                state.isLoading = true
+            }),
+            builder.addCase(loginUser.fulfilled, (state, action) => {
+                state.token = localStorage.setItem('token', action.payload.Token)
+                state.user = localStorage.setItem('user', action.payload)
             }),
             builder.addCase(loginUser.rejected, (state, action) => {
                 state.message = action.payload
