@@ -21,7 +21,7 @@ module.exports = {
                 })
             }
 
-            const newTicket = await Ticket.create({
+           await Ticket.create({
                 product,
                 description,
                 user,
@@ -29,7 +29,6 @@ module.exports = {
             })
 
             res.status(201).json({
-                newTicket,
                 message: "Ticket created successfully"
             })
         } catch (error) {
