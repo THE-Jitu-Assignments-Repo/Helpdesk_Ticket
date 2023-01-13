@@ -11,15 +11,16 @@ const {
 const router = require('express').Router()
 
 
-router.post('/create', verifyToken, createTickets)
-router.get('/get', verifyToken, getTickets)
+router.post('/', verifyToken, createTickets)
+router.get('/', verifyToken, getTickets)
+
 router.get('/:id', verifyToken, getSingleTicket)
 router.delete('/:id', verifyToken, deleteTicket)
 router.put('/:id', verifyToken, updateTicket)
 
 
 // chaining routes
-
+router.route('/').post(verifyToken,createTickets).get(verifyToken,getTickets)
 router.route('/:id').get(verifyToken, getSingleTicket).delete(verifyToken, deleteTicket).put(verifyToken, updateTicket)
 
 
