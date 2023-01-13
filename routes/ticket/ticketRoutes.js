@@ -20,8 +20,8 @@ router.put('/:id', verifyToken, updateTicket)
 
 
 // chaining routes
-router.route('/').post(verifyToken,createTickets).get(verifyToken,getTickets)
-router.route('/:id').get(verifyToken, getSingleTicket).delete(verifyToken, deleteTicket).put(verifyToken, updateTicket)
+// router.route('/').post(verifyToken, createTickets).get(verifyToken, getTickets)
+// router.route('/:id').get(verifyToken, getSingleTicket).delete(verifyToken, deleteTicket).put(verifyToken, updateTicket)
 
 
 module.exports = router
