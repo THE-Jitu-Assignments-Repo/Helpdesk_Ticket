@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: false})) //to accept url encoded form
 // app.use(errorHandler)
 
 app.use('/api/users', userRoutes)
-app.use('api/tickets', ticketRoutes)
+app.use('/api/tickets', ticketRoutes)
 
 app.listen(process.env.PORT, ()=>{
     console.log(`listening to port ${process.env.PORT}`);

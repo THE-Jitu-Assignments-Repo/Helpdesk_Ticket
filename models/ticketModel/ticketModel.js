@@ -6,9 +6,9 @@ const ticketSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    products: {
+    product: {
         type: String,
-        required: [true, "Please slect a product"],
+        required: [true, "Please select a product"],
         enum: [ 'Hp Laptop', 'Dell Laptop', 'Mouse', 'Flash Drive', 'Mac Book', 'Epison printer']
     },
     description: {

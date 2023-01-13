@@ -41,6 +41,7 @@ module.exports = {
     },
     getTickets: async (req, res) => {
         try {
+            // console.log("gvjhvjh");
             const user = await User.findById(req.info._id)
 
             if (!user) {
@@ -148,19 +149,17 @@ module.exports = {
                     message: "Ticket not Found"
                 })
             }
-
+            // console.log(singleTicket);
             if (singleTicket.user.toString() !== req.info._id) {
                 res.status(401)
                 throw new Error('Not authorized')
             }
 
-            const updatedTicket = await singleTicket.findByIdAndUpdate(req.params.id, req.body, {
+            const updatedTicket = await Ticket.findByIdAndUpdate(req.params.id, req.body, {
                 new: true
             })
 
-            res.status(201).json(updatedTicket, {
-                message: "updated succefully"
-            })
+            res.status(201).json(updatedTicket)
 
         } catch (error) {
             res.status(401).json({

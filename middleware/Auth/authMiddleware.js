@@ -12,8 +12,9 @@ module.exports={
             }
             const decodedTokeData = jwt.verify(token.split(" ")[1], process.env.SECRET)
 
-            console.log(decodedTokeData);
+            // console.log(decodedTokeData);
             req.info = decodedTokeData
+            // console.log(req.info._id);
             // req.user = 
         } catch (error) {
             return res.status(401).json({message: error.message})

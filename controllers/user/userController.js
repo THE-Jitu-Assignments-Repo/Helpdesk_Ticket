@@ -82,7 +82,7 @@ module.exports = {
                     name: user.username,
                     email: user.email
                 }, process.env.SECRET, {
-                    expiresIn: "1min"
+                    expiresIn: "10hrs"
                 })
 
                 res.status(200).json({
