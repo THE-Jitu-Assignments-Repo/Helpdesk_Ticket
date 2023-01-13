@@ -1,6 +1,6 @@
 const dotenv = require('dotenv').config()
 const bcrypt = require('bcrypt')
-const User = require('../models/userModel')
+const User = require('../../models/userModel')
 const jwt = require('jsonwebtoken')
 
 module.exports = {
@@ -82,7 +82,7 @@ module.exports = {
                     name: user.username,
                     email: user.email
                 }, process.env.SECRET, {
-                    expiresIn: "24hrs"
+                    expiresIn: "1min"
                 })
 
                 res.status(200).json({

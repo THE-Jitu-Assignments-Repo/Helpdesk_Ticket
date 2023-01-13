@@ -1,7 +1,7 @@
 const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv')
-const userRoutes = require('./routes/userRouters')
+const userRoutes = require('./routes/user/userRouters')
 const cors = require('cors')
 // const {errorHandler} = require('./middleware/Helper/errorHandler')
 const {connectDB} = require('./config/db')
