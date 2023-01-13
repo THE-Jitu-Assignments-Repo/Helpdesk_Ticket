@@ -26,7 +26,7 @@ useEffect(() => {
         dispatch(logoutUser())
       }
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="header">
