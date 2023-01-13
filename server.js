@@ -2,6 +2,7 @@ const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv')
 const userRoutes = require('./routes/user/userRouters')
+const ticketRoutes = require('./routes/ticket/ticketRoutes')
 const cors = require('cors')
 // const {errorHandler} = require('./middleware/Helper/errorHandler')
 const {connectDB} = require('./config/db')
@@ -17,6 +18,7 @@ app.use(express.urlencoded({extended: false})) //to accept url encoded form
 // app.use(errorHandler)
 
 app.use('/api/users', userRoutes)
+app.use('api/tickets', ticketRoutes)
 
 app.listen(process.env.PORT, ()=>{
     console.log(`listening to port ${process.env.PORT}`);
