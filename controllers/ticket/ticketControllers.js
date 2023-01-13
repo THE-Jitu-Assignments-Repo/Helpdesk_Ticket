@@ -1,3 +1,5 @@
+const Ticket = require('../../models/ticketModel/ticketModel')
+
 module.exports={
      createTickets: async(req,res)=>{
         try {
@@ -12,5 +14,12 @@ module.exports={
         } catch (error) {
             
         }
-    }
+    },
+    updateTickets: async(req,res)=>{
+        try {
+            
+        } catch (error) {
+            
+        }
+    }    
 }
