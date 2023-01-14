@@ -130,6 +130,7 @@ h3 {
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+  text-align: center;
 }
 
 .heading p {
@@ -193,6 +194,27 @@ h3 {
   font-size: 1.3rem;
 }
 
+/* .form-group {
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.form-group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
+} */
+
 @media screen and (max-width: 600px) {
   .login {
     width: 80%;
@@ -213,8 +235,27 @@ h3 {
     font-size: 2rem;
     text-align: center;
   }
+  .heading-tag h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
 
   .heading p {
     font-size: 1.3rem;
+  }
+  .heading-tag p {
+    font-size: 1.3rem;
+  }
+  .form-form-ticket {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .btn {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
   }
 }
