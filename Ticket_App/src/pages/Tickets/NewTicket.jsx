@@ -1,13 +1,34 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { FaWindowClose } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset } from "../../features/Tickets/ticketSlice";
 import "./ticket.css";
 
 function NewTicket() {
   const { user } = useSelector((state) => state.auth);
-  // const [username, email] =
+  const { isError, isLoading, isSuccess, message } = useSelector(
+    (state) => state.ticket
+  );
   const [product, setProduct] = useState("Hp Laptop");
   const [description, setDescription] = useState("");
+  const [err, setErr] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isError) {
+      setErr(message);
+    }
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/tickets");
+    }
+    dispatch(reset());
+  }, [dispatch, isError, isSuccess, reset, message]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +42,20 @@ function NewTicket() {
 
       <section className="form--ticket">
         <section className="form-group">
+          {err ? (
+            <span
+              style={{
+                color: "red",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <FaWindowClose /> {err}
+            </span>
+          ) : (
+            ""
+          )}
           <div className="form-form-ticket">
             <label htmlFor="name">Customer Name</label>
             <input type="text" name="name" value={user?.username} disabled />
