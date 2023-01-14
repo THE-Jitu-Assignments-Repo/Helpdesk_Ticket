@@ -22,9 +22,9 @@ export const useAuthStatus = () => {
         }
 
         setCheckingStatus(false)
-        return {
-            loggedIn,
-            checkingStatus
-        }
     }, [user])
+    return {
+        loggedIn,
+        checkingStatus
+    }
 }
