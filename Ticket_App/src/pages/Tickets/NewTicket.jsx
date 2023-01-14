@@ -23,9 +23,9 @@ function NewTicket() {
         <section className="form-group">
           <div className="form-form-ticket">
             <label htmlFor="name">Customer Name</label>
-            <input type="text" name="name" disabled />
+            <input type="text" name="name" value={user?.username} disabled />
             <label htmlFor="email">Customer email</label>
-            <input type="email" name="email" disabled />
+            <input type="email" name="email" value={user?.email} disabled />
           </div>
           <form onSubmit={handleSubmit} className="form-form-ticket">
             <label htmlFor="product">Product</label>
