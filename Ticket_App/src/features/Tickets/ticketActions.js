@@ -18,12 +18,30 @@ export const createTicket = createAsyncThunk(
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log('jjj');
+            // console.log('jjj');
             return response.data
 
         } catch (error) {
             return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
 
+        }
+    }
+)
+
+export const getTickets = createAsyncThunk(
+    "ticket/getTickets",
+    async(_,{getState, rejectWithValue})=>{
+        try {
+            const token = getState().auth.user.Token
+            const response = await axios.get('http://localhost:3002/api/tickets', {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            return response.data
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
         }
     }
 )
