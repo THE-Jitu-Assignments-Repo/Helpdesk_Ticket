@@ -7,7 +7,7 @@ import {
 } from "react-redux"
 
 
-export const authStatus = () => {
+export const useAuthStatus = () => {
     const [loggedIn, setLoggedIn] = useState(true)
     const [checkingStatus, setCheckingStatus] = useState(false)
     const {
