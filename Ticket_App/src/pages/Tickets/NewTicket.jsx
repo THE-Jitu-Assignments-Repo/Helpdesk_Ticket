@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Back from "../../components/backButton/Back";
+import { createTicket } from "../../features/Tickets/ticketActions";
 import { reset } from "../../features/Tickets/ticketSlice";
 import "./ticket.css";
 
@@ -32,6 +34,7 @@ function NewTicket() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createTicket({product,description}))
   };
   return (
     <>
@@ -42,6 +45,7 @@ function NewTicket() {
 
       <section className="form--ticket">
         <section className="form-group">
+          <div className="form-form-ticket">
           {err ? (
             <span
               style={{
@@ -49,6 +53,7 @@ function NewTicket() {
                 display: "flex",
                 alignItems: "center",
                 gap: "4px",
+                marginBottom: '10px'
               }}
             >
               <FaWindowClose /> {err}
@@ -56,7 +61,6 @@ function NewTicket() {
           ) : (
             ""
           )}
-          <div className="form-form-ticket">
             <label htmlFor="name">Customer Name</label>
             <input type="text" name="name" value={user?.username} disabled />
             <label htmlFor="email">Customer email</label>
@@ -67,7 +71,7 @@ function NewTicket() {
             <select
               name="product"
               value={product}
-              onChange={(e) => setProduct(e.target.value)}
+              onChange={(e) => {setProduct(e.target.value), setErr('')}}
             >
               <option value="Hp Laptop">Hp Laptop</option>
               <option value="Dell Laptop">Dell Laptop</option>
@@ -81,11 +85,14 @@ function NewTicket() {
               name="description"
               placeholder="Enter description"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => {setDescription(e.target.value), setErr('')}}
             ></textarea>
             <button className="btn btn-block-T">Submit</button>
           </form>
         </section>
+        <div className="back">
+          <Back url={"/"} />
+        </div>
       </section>
     </>
   );

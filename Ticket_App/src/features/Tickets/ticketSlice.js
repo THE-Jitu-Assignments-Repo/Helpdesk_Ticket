@@ -28,7 +28,7 @@ export const ticketSlice = createSlice({
             state.isSuccess = true
         }),
         builder.addCase(createTicket.rejected, (state,action)=>{
-            isLoading = false
+            state.isLoading = false
             state.isError = true
             state.message = action.payload
         })

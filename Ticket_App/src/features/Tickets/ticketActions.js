@@ -11,12 +11,13 @@ export const createTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
+
             const response = await axios.post('http://localhost:3002/api/ticket', ticketDetails,{
                 Headers:{
                     Authorization: `Bearer ${token}`
                 }
             })
-
+            console.log('jjj');
             return response.data
 
         } catch (error) {

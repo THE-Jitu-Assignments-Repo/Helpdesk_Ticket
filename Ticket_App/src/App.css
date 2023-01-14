@@ -194,6 +194,16 @@ h3 {
   font-size: 1.3rem;
 }
 
+.btn-reverse {
+  background: #fff;
+  color: #000;
+}
+.btn-back {
+  width: 150px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
 /* .form-group {
   margin-bottom: 10px;
 }
@@ -251,11 +261,22 @@ h3 {
     margin: 0 auto;
   }
   .btn {
-    width: 80%;
+    /* width: 80%; */
     padding: 10px;
     border: 1px solid #000;
     border-radius: 5px;
     font-size: 14px;
     font-weight: 700;
   }
+  .btn-reverse {
+  background: #fff;
+  color: #000;
+}
+.btn-back {
+  /* width: 6; */
+  margin-bottom: 20px;
+}
+.back{
+  justify-content: flex-start;
+}
 }
