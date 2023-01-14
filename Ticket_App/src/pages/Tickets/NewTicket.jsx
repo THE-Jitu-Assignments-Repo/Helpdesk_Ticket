@@ -62,7 +62,7 @@ function NewTicket() {
             ""
           )}
             <label htmlFor="name">Customer Name</label>
-            <input type="text" name="name" value={user?.username} disabled />
+            <input type="text" name="name" value={user?.name} disabled />
             <label htmlFor="email">Customer email</label>
             <input type="email" name="email" value={user?.email} disabled />
           </div>

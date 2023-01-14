@@ -1,6 +1,7 @@
 import {
     createAsyncThunk
 } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const createTicket = createAsyncThunk(
     "ticket/createTicket",
@@ -12,8 +13,8 @@ export const createTicket = createAsyncThunk(
         try {
             const token = getState().auth.user.Token
 
-            const response = await axios.post('http://localhost:3002/api/ticket', ticketDetails,{
-                Headers:{
+            const response = await axios.post('http://localhost:3002/api/tickets', ticketDetails,{
+                headers:{
                     Authorization: `Bearer ${token}`
                 }
             })

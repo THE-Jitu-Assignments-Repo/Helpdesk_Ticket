@@ -16,7 +16,7 @@ function Routers() {
         <Route path="register" element={<Register />} />
         
         <Route path="/newTicket" element={<Private />}>
-          <Route path="newTicket" element={<NewTicket />} />
+          <Route path="/newTicket" element={<NewTicket />} />
         </Route>
       </Route>
     </Routes>
