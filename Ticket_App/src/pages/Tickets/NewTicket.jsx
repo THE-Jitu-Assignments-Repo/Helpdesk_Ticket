@@ -2,7 +2,8 @@ import React from 'react'
 
 function NewTicket() {
   return (
-    <div>New Ticket</div>
+    <div>
+        <h1>New Ticket</h1></div>
   )
 }
 
