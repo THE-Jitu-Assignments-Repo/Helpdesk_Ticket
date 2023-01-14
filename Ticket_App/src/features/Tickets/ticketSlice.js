@@ -1,6 +1,7 @@
 import {
     createSlice
 } from "@reduxjs/toolkit"
+import { createTicket } from "./ticketActions"
 
 const initialState = {
     ticket: {},
@@ -19,7 +20,18 @@ export const ticketSlice = createSlice({
         reset:(state)=>initialState
     },
     extraReducers: (builder) => {
-
+        builder.addCase(createTicket.pending, (state,action)=>{
+            state.isLoading=true
+        }),
+        builder.addCase(createTicket.fulfilled, (state,action)=>{
+            state.isLoading = false
+            state.isSuccess = true
+        }),
+        builder.addCase(createTicket.rejected, (state,action)=>{
+            isLoading = false
+            state.isError = true
+            state.message = action.payload
+        })
     }
 })
 
