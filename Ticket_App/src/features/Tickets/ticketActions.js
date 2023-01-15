@@ -29,7 +29,7 @@ export const createTicket = createAsyncThunk(
 )
 
 export const getTickets = createAsyncThunk(
-    "ticket/getTickets",
+    "ticket/getTickets",//all tickets
     async(_,{getState, rejectWithValue})=>{
         try {
             const token = getState().auth.user.Token

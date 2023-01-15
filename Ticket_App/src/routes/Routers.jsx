@@ -6,6 +6,7 @@ import Index from "../components/Layout/Index";
 import Home from "../pages/home/Home";
 import NewTicket from "../pages/Tickets/NewTicket";
 import Private from "../components/Layout/Guard/Private";
+import Ticket from "../pages/Tickets/Ticket";
 
 function Routers() {
   return (
@@ -17,6 +18,9 @@ function Routers() {
         
         <Route path="/newTicket" element={<Private />}>
           <Route path="/newTicket" element={<NewTicket />} />
+        </Route>
+        <Route path="/tickets" element={<Private />}>
+          <Route path="/tickets" element={<Ticket />}/>
         </Route>
       </Route>
     </Routes>
