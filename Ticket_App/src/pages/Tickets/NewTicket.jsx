@@ -5,6 +5,7 @@ import { FaWindowClose } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Back from "../../components/backButton/Back";
+import Spinner from "../../components/spinner/Spinner";
 import { createTicket } from "../../features/Tickets/ticketActions";
 import { reset } from "../../features/Tickets/ticketSlice";
 import "./ticket.css";
@@ -36,6 +37,9 @@ function NewTicket() {
     dispatch(reset());
     navigate("/tickets");
   };
+  if(isLoading){
+    return <Spinner />
+  }
   return (
     <>
       <section className="heading-tag">
