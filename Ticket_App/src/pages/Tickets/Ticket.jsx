@@ -15,10 +15,6 @@ function Ticket() {
   useEffect(() => {
     dispatch(getTickets());
   }, [dispatch]);
-
-  let data = tickets.map(item=>{
-    return item._id
-  })
   
   if(isLoading){
     return <Spinner />
@@ -34,12 +30,9 @@ function Ticket() {
           <div>product</div>
           <div>status</div>
         </div>
-        {data}
         {tickets.map((ticket) => {
          return <TicketCard key={ticket._id} item={ticket}/>;
         })}
-
-        {/* <TicketCard /> */}
       </div>
     </>
   );
