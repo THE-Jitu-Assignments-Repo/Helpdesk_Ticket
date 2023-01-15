@@ -26,15 +26,15 @@ function NewTicket() {
       setErr(message);
     }
     if (isSuccess) {
-      dispatch(reset());
-      navigate("/tickets");
     }
     dispatch(reset());
   }, [dispatch, isError, isSuccess, reset, message]);
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async(e) =>{
     e.preventDefault();
-    dispatch(createTicket({product,description}))
+    await dispatch(createTicket({product,description}))
+    dispatch(reset());
+    navigate("/tickets");
   };
   return (
     <>

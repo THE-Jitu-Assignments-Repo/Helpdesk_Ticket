@@ -15,13 +15,23 @@ function Routers() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        
-        <Route path="/newTicket" element={<Private />}>
-          <Route path="/newTicket" element={<NewTicket />} />
-        </Route>
-        <Route path="/tickets" element={<Private />}>
-          <Route path="/tickets" element={<Ticket />}/>
-        </Route>
+        <Route
+          path="/newTicket"
+          element={
+            <Private>
+              <NewTicket />
+            </Private>
+          }
+        />
+
+        <Route
+          path="/tickets"
+          element={
+            <Private>
+              <Ticket />
+            </Private>
+          }
+        />
       </Route>
     </Routes>
   );
