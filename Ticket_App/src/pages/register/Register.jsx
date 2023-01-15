@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaHandPointRight, FaUser, FaWindowClose } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import Spinner from "../../components/spinner/Spinner";
 import { RegisterUser } from "../../features/Auth/authActions";
 import { reset } from "../../features/Auth/authSlice";
 import "./register.css";
@@ -45,6 +46,10 @@ function Register() {
     }
     dispatch(reset())
   }, [isSuccess, isError, message, navigate, dispatch])
+
+  if(isLoading){
+    return <Spinner />
+  }
 
   return (
     <div className="register">
