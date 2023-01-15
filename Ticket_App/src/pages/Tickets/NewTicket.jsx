@@ -26,20 +26,29 @@ function NewTicket() {
     if (isError) {
       setErr(message);
     }
-    if (isSuccess) {
+    if (err) {
+      dispatch(reset());
     }
-    dispatch(reset());
-  }, [dispatch, isError, isSuccess, reset, message]);
-  
-  const handleSubmit = async(e) =>{
+  }, [dispatch, isError, reset, message, err]);
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await dispatch(createTicket({ product, description }));
+  //   if(isError){
+  //     setErr(message)
+  //   }
+  // };
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await dispatch(createTicket({product,description}))
-    dispatch(reset());
-    navigate("/tickets");
+    dispatch(createTicket({ product, description }))
+      .unwrap()
+      .then(() => {
+        navigate("/tickets");
+      });
   };
-  if(isLoading){
-    return <Spinner />
-  }
+  // if(isLoading){
+  //   return <Spinner />
+  // }
   return (
     <>
       <section className="heading-tag">
@@ -50,21 +59,21 @@ function NewTicket() {
       <section className="form--ticket">
         <section className="form-group">
           <div className="form-form-ticket">
-          {err ? (
-            <span
-              style={{
-                color: "red",
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-                marginBottom: '10px'
-              }}
-            >
-              <FaWindowClose /> {err}
-            </span>
-          ) : (
-            ""
-          )}
+            {err ? (
+              <span
+                style={{
+                  color: "red",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  marginBottom: "10px",
+                }}
+              >
+                <FaWindowClose /> {err}
+              </span>
+            ) : (
+              ""
+            )}
             <label htmlFor="name">Customer Name</label>
             <input type="text" name="name" value={user?.name} disabled />
             <label htmlFor="email">Customer email</label>
@@ -75,7 +84,9 @@ function NewTicket() {
             <select
               name="product"
               value={product}
-              onChange={(e) => {setProduct(e.target.value), setErr('')}}
+              onChange={(e) => {
+                setProduct(e.target.value), setErr("");
+              }}
             >
               <option value="Hp Laptop">Hp Laptop</option>
               <option value="Dell Laptop">Dell Laptop</option>
@@ -89,7 +100,9 @@ function NewTicket() {
               name="description"
               placeholder="Enter description"
               value={description}
-              onChange={(e) => {setDescription(e.target.value), setErr('')}}
+              onChange={(e) => {
+                setDescription(e.target.value), setErr("");
+              }}
             ></textarea>
             <button className="btn btn-block-T">Submit</button>
           </form>
