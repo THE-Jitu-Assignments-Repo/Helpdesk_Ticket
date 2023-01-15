@@ -5,6 +5,7 @@ import { getTickets } from "../../features/Tickets/ticketActions";
 import { reset } from "../../features/Tickets/ticketSlice";
 import Back from "../../components/backButton/Back";
 import TicketCard from "../../components/cards/TicketCard";
+import Spinner from "../../components/spinner/Spinner";
 
 
 function Ticket() {
@@ -18,6 +19,10 @@ function Ticket() {
   let data = tickets.map(item=>{
     return item._id
   })
+  
+  if(isLoading){
+    return <Spinner />
+  }
 
   return (
     <>
