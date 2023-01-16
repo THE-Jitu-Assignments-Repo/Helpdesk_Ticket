@@ -13,8 +13,8 @@ export const createTicket = createAsyncThunk(
         try {
             const token = getState().auth.user.Token
 
-            const response = await axios.post('http://localhost:3002/api/tickets', ticketDetails,{
-                headers:{
+            const response = await axios.post('http://localhost:3002/api/tickets', ticketDetails, {
+                headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
@@ -29,12 +29,15 @@ export const createTicket = createAsyncThunk(
 )
 
 export const getTickets = createAsyncThunk(
-    "ticket/getTickets",//all tickets
-    async(_,{getState, rejectWithValue})=>{
+    "ticket/getTickets", //all tickets
+    async (_, {
+        getState,
+        rejectWithValue
+    }) => {
         try {
             const token = getState().auth.user.Token
             const response = await axios.get('http://localhost:3002/api/tickets', {
-                headers:{
+                headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
@@ -42,6 +45,28 @@ export const getTickets = createAsyncThunk(
             return response.data
         } catch (error) {
             return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
+        }
+    }
+)
+
+export const getSingleTicket = createAsyncThunk(
+    "ticket/getSingleTicket",
+    async (ticketID, {
+        getState,
+        rejectWithValue
+    }) => {
+        try {
+            const token = getState().auth.user.Token
+            const response = await axios.get(`https://localhost:3002/api/tickets/:${ticketID}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            return response.data
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
+
         }
     }
 )

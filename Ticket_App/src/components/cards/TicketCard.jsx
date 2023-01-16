@@ -8,7 +8,7 @@ function TicketCard({item}) {
         <div>{new Date(item.createdAt).toLocaleString('en-US')}</div>
         <div>{item.product}</div>
         <div className={`status status-${item.status}`}>{item.status}</div>
-        <Link to={`/ticket/${item._id}`} className='btn btn-reverse btn-sm'>
+        <Link to={`/tickets/${item._id}`} className='btn btn-reverse btn-sm'>
             view
         </Link>
     </div>
