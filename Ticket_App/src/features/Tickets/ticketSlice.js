@@ -3,6 +3,7 @@ import {
 } from "@reduxjs/toolkit"
 import {
     createTicket,
+    getSingleTicket,
     getTickets
 } from "./ticketActions"
 
@@ -44,6 +45,19 @@ export const ticketSlice = createSlice({
                 state.tickets = action.payload
             }),
             builder.addCase(getTickets.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            }),
+            builder.addCase(getSingleTicket.pending, (state, action) => {
+                state.isLoading = true
+            }),
+            builder.addCase(getSingleTicket.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.ticket = action.payload
+            }),
+            builder.addCase(getSingleTicket.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
