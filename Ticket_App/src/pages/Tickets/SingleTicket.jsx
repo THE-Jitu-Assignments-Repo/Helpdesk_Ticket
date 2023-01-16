@@ -44,7 +44,7 @@ function SingleTicket() {
             <hr />
             <div className="ticket-desc">
                 <h3>Description of the issue</h3>
-                    <p>{ticket.description}</p>
+                <p>{ticket.description}</p>
             </div>
         </header>
     </div>

@@ -2,6 +2,7 @@ import {
     createSlice
 } from "@reduxjs/toolkit"
 import {
+    closeTicket,
     createTicket,
     getSingleTicket,
     getTickets
@@ -61,6 +62,11 @@ export const ticketSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+            }),
+            // note: to prevent manual refresh for updated status
+            builder.addCase(closeTicket.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.tickets.map((ticket) => ticket._id === action.payload._id ? ticket.status = 'closed' : ticket)
             })
     }
 })
