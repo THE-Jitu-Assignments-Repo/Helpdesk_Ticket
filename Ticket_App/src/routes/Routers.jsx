@@ -7,6 +7,7 @@ import Home from "../pages/home/Home";
 import NewTicket from "../pages/Tickets/NewTicket";
 import Private from "../components/Layout/Guard/Private";
 import Ticket from "../pages/Tickets/Ticket";
+import SingleTicket from "../pages/Tickets/SingleTicket";
 
 function Routers() {
   return (
@@ -29,6 +30,14 @@ function Routers() {
           element={
             <Private>
               <Ticket />
+            </Private>
+          }
+        />
+        <Route
+          path="/tickets/:ticketID"
+          element={
+            <Private>
+              <SingleTicket />
             </Private>
           }
         />
