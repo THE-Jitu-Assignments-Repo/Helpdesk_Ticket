@@ -6,7 +6,7 @@ import { reset } from "../../features/Tickets/ticketSlice";
 import Back from "../../components/backButton/Back";
 import TicketCard from "../../components/cards/TicketCard";
 import Spinner from "../../components/spinner/Spinner";
-
+import "./ticket.css";
 
 function Ticket() {
   const { tickets, isSucces, isLoading } = useSelector((state) => state.ticket);
@@ -15,15 +15,15 @@ function Ticket() {
   useEffect(() => {
     dispatch(getTickets());
   }, [dispatch]);
-  
-  if(isLoading){
-    return <Spinner />
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (
     <>
       <Back url="/" />
-      <h1>Tickets</h1>
+      <h1 className="h-ticket">Tickets</h1>
       <div className="tickets">
         <div className="ticket-headings">
           <div>Date</div>
@@ -31,7 +31,7 @@ function Ticket() {
           <div>status</div>
         </div>
         {tickets.map((ticket) => {
-         return <TicketCard key={ticket._id} item={ticket}/>;
+          return <TicketCard key={ticket._id} item={ticket} />;
         })}
       </div>
     </>

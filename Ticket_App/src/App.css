@@ -355,4 +355,9 @@ h3 {
 .back{
   justify-content: flex-start;
 }
+.ticket,
+.ticket-headings {
+  display: flex;
+  /* flex-direction: column; */
+}
 }
