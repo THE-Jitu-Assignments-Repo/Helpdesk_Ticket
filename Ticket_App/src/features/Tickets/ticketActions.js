@@ -62,7 +62,7 @@ export const getSingleTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.get(`https://localhost:3002/api/tickets/:${ticketID}`, {
+            const response = await axios.get(`http://localhost:3002/api/tickets/${ticketID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -86,7 +86,7 @@ export const closeTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.put(`https://localhost:3002/api/tickets/:${ticketID}`, {
+            const response = await axios.put(`http://localhost:3002/api/tickets/${ticketID}`, {
                 status: 'closed'
             }, {
                 headers: {

@@ -26,6 +26,7 @@ function SingleTicket() {
         //eslint-disable-next-line        
     }, [message, isError,ticketID])
 
+
     const handleClose = ()=>{
         dispatch(closeTicket(ticketID))
         //include toast
