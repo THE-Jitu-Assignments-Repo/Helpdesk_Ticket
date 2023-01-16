@@ -4,14 +4,16 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getSingleTicket } from '../../features/Tickets/ticketActions';
+import { closeTicket, getSingleTicket } from '../../features/Tickets/ticketActions';
 import Spinner from '../../components/spinner/Spinner';
 import Back from '../../components/backButton/Back';
+import { useNavigate } from 'react-router-dom';
 
 function SingleTicket() {
     const {ticket, isLoading, isSuccess, message, isError} = useSelector(state=>state.ticket)
     const [err, setErr] = useState('')
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {ticketID} = useParams()
 
@@ -23,6 +25,12 @@ function SingleTicket() {
         dispatch(getSingleTicket(ticketID))
         //eslint-disable-next-line        
     }, [message, isError,ticketID])
+
+    const handleClose = ()=>{
+        dispatch(closeTicket(ticketID))
+        //include toast
+        navigate('/tickets')
+    }
 
     if(isLoading){
         return <Spinner />
@@ -38,6 +46,7 @@ function SingleTicket() {
                 TIcket ID: {ticket._id}
                 <span className={`status status-${ticket.status}`}>{ticket.status}</span>
             </h2>
+            <h3>Product: {ticket.product}</h3>
             <h3>
                 Date Submitted: {new Date(ticket.createdAt).toLocaleString('en-US')}
             </h3>
@@ -47,6 +56,8 @@ function SingleTicket() {
                 <p>{ticket.description}</p>
             </div>
         </header>
+
+        {ticket.status !== 'closed' &&( <button className='btn btn-danger btn-block' onClick={handleClose}></button>)}
     </div>
   )
 }
