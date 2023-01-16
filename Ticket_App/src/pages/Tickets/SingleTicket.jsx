@@ -42,7 +42,7 @@ function SingleTicket() {
   return (
     <div className="ticket-page">
         <header className="ticket-head">
-            <Back url='/tickets' />
+            <Back url='/tickets' className='back' />
             <h2>
                 TIcket ID: {ticket._id}
                 <span className={`status status-${ticket.status}`}>{ticket.status}</span>
@@ -58,7 +58,7 @@ function SingleTicket() {
             </div>
         </header>
 
-        {ticket.status !== 'closed' &&( <button className='btn btn-danger btn-block' onClick={handleClose}></button>)}
+        {ticket.status !== 'closed' &&( <button className='btn-t btn-danger btn-block' onClick={handleClose}>Close Ticket</button>)}
     </div>
   )
 }
