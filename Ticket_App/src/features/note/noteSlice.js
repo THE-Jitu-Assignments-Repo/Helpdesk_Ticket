@@ -1,19 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { getNote } from "./noteActions"
+import {
+    createSlice
+} from "@reduxjs/toolkit"
+import {
+    getNote
+} from "./noteActions"
 
-const initialState={
-    notes:[],
+const initialState = {
+    notes: [],
     isError: false,
-    isSuccess:false,
+    isSuccess: false,
     isLoading: false,
-    message:''
+    message: ''
 }
 export const noteSlice = createSlice({
     name: "notes",
+    reducers: {
+        reset: (state) => initialState
+    },
     initialState,
-    extraReducers: builder=>{
-        builder.addCase(getNote.fulfilled,(state,action)=>{
-            
+    extraReducers: builder => {
+        builder.addCase(getNote.fulfilled, (state, action) => {
+
         })
     }
 })
