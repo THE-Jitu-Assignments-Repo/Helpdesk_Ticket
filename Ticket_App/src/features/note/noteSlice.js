@@ -1,7 +1,9 @@
 import {
     createSlice
 } from "@reduxjs/toolkit"
-import { reset } from "../Auth/authSlice"
+import {
+    reset
+} from "../Auth/authSlice"
 import {
     getNote
 } from "./noteActions"
@@ -20,11 +22,23 @@ export const noteSlice = createSlice({
     },
     initialState,
     extraReducers: builder => {
-        builder.addCase(getNote.fulfilled, (state, action) => {
-
-        })
+        builder.addCase(getNote.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(getNote.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.notes = action.payload
+            })
+            .addCase(getNote.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
     }
 })
-export const {reset} = noteSlice.actions
+export const {
+    reset
+} = noteSlice.actions
 
 export default noteSlice.reducer
