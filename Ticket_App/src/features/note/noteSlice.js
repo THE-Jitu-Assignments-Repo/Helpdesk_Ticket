@@ -1,6 +1,7 @@
 import {
     createSlice
 } from "@reduxjs/toolkit"
+import { reset } from "../Auth/authSlice"
 import {
     getNote
 } from "./noteActions"
@@ -24,5 +25,6 @@ export const noteSlice = createSlice({
         })
     }
 })
+export const {reset} = noteSlice.actions
 
 export default noteSlice.reducer
