@@ -21,7 +21,7 @@ module.exports = {
                 })
             }
 
-           await Ticket.create({
+            await Ticket.create({
                 product,
                 description,
                 user,
@@ -166,5 +166,5 @@ module.exports = {
                 stack: process.env.Node_env === 'production' ? null : error.stack
             })
         }
-    }   
+    }
 }
