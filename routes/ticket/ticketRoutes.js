@@ -10,6 +10,9 @@ const {
 } = require('../../middleware/Auth/authMiddleware')
 const router = require('express').Router()
 
+// a reroute into note router
+const noteRouter = require('../note/noteRoutes')
+router.use('/:ticketID/notes', noteRouter)
 
 router.post('/', verifyToken, createTickets)
 router.get('/', verifyToken, getTickets)
