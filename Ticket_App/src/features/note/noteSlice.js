@@ -5,7 +5,7 @@ import {
     reset
 } from "../Auth/authSlice"
 import {
-    getNote
+  getNotes
 } from "./noteActions"
 
 const initialState = {
@@ -22,15 +22,15 @@ export const noteSlice = createSlice({
     },
     initialState,
     extraReducers: builder => {
-        builder.addCase(getNote.pending, (state, action) => {
+        builder.addCase(getNotes.pending, (state, action) => {
                 state.isLoading = true
             })
-            .addCase(getNote.fulfilled, (state, action) => {
+            .addCase(getNotes.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.notes = action.payload
             })
-            .addCase(getNote.rejected, (state, action) => {
+            .addCase(getNotes.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

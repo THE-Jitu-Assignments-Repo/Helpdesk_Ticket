@@ -1,9 +1,9 @@
 import React from 'react'
 
-function noteCard() {
+function NoteCard({note}) {
   return (
     <div>noteCard</div>
   )
 }
 
-export default noteCard
+export default NoteCard

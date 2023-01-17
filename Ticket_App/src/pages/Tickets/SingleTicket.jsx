@@ -8,9 +8,12 @@ import { closeTicket, getSingleTicket } from '../../features/Tickets/ticketActio
 import Spinner from '../../components/spinner/Spinner';
 import Back from '../../components/backButton/Back';
 import { useNavigate } from 'react-router-dom';
+import { getNotes } from '../../features/note/noteActions';
+import NoteCard from '../../components/cards/noteCard';
 
 function SingleTicket() {
     const {ticket, isLoading, isSuccess, message, isError} = useSelector(state=>state.ticket)
+    const {notes, isLoading: noteLoading} = useSelector(state=>state.notes)
     const [err, setErr] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -23,6 +26,7 @@ function SingleTicket() {
         }
 
         dispatch(getSingleTicket(ticketID))
+        dispatch(getNotes(ticketID))
         //eslint-disable-next-line        
     }, [message, isError,ticketID])
 
@@ -33,7 +37,7 @@ function SingleTicket() {
         navigate('/tickets')
     }
 
-    if(isLoading){
+    if(isLoading || noteLoading){
         return <Spinner />
     }
     if(isError){
@@ -56,7 +60,11 @@ function SingleTicket() {
                 <h3>Description of the issue</h3>
                 <p>{ticket.description}</p>
             </div>
+            <h2>Notes:</h2>
         </header>
+        {notes.map(note=>{
+            return <NoteCard key={note._id} note={note}/>
+        })}
 
         {ticket.status !== 'closed' &&( <button className='btn-t btn-danger btn-block' onClick={handleClose}>Close Ticket</button>)}
     </div>

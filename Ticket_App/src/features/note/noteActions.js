@@ -3,7 +3,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getNote = createAsyncThunk(
+export const getNotes = createAsyncThunk(
     "notes/getnote",
     async (ticketID, {
         getstate,
