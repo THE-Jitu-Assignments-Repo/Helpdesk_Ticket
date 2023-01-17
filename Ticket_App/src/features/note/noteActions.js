@@ -16,9 +16,11 @@ export const getNote = createAsyncThunk(
                     Authorization: `Bearer ${token}`
                 }
             })
-
+            return response.data
         } catch (error) {
-            rejectWithValue(error.message)
+
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
+
         }
     }
 )
