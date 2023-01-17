@@ -25,7 +25,7 @@ module.exports={
                 res.status(401)
                 throw new Error('Not authorized')
             }
-            const notes = await Note.findById({ticket: req.params.ticketID})
+            const notes = await Note.find({ticket: req.params.ticketID})
 
             res.status(200).json(
                 notes
