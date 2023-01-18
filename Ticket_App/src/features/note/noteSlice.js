@@ -5,6 +5,7 @@ import {
     reset
 } from "../Auth/authSlice"
 import {
+    createNote,
   getNotes
 } from "./noteActions"
 
@@ -31,6 +32,19 @@ export const noteSlice = createSlice({
                 state.notes = action.payload
             })
             .addCase(getNotes.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            }),
+            addCase(createNote.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(createNote.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.notes.push(action.payload)
+            })
+            .addCase(createNote.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
