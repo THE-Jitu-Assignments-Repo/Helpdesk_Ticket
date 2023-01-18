@@ -5,7 +5,7 @@ module.exports={
     verifyToken: async(req,res,next)=>{
         try {
             const token = req.headers.authorization
-            console.log(token);
+            // console.log(token);
 
             if(!token){
                 return res.status(402).json({message: "Not authorized, Please provide a token"})
