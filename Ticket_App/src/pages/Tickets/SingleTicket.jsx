@@ -13,8 +13,15 @@ import Back from "../../components/backButton/Back";
 import { useNavigate } from "react-router-dom";
 import { getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
+import Modal from "react-modal";
+import customStyles from "./CustomStyles";
+import { FaPlus } from "react-icons/fa";
+
+Modal.setAppElement("#root");
 
 function SingleTicket() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [noteText, setNoteText] = useState("");
   const { ticket, isLoading, isSuccess, message, isError } = useSelector(
     (state) => state.ticket
   );
@@ -47,6 +54,19 @@ function SingleTicket() {
   if (isError) {
     return <h2>Something went wrong</h2>;
   }
+
+  //open and close modal to add note
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleNote = (e) => {
+    e.preventDefault();
+    closeModal();
+  };
   return (
     <div className="ticket-page">
       <header className="ticket-head">
@@ -68,6 +88,43 @@ function SingleTicket() {
         </div>
         <h2>Notes:</h2>
       </header>
+
+      {ticket.status !== "close" && (
+        <button className="btn" onClick={openModal}>
+          {" "}
+          <FaPlus />
+          Add Note
+        </button>
+      )}
+
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Add Note"
+      >
+        <h2>Add Note</h2>
+        <button className="btn-close" onClick={closeModal}>
+          <FaWindowClose />
+        </button>
+        <form onSubmit={handleNote}>
+          <div className="form-group">
+            <textarea
+              name="noteText"
+              placeholder="Note text"
+              className="form-control"
+              value={noteText}
+              onChange={(e) => setNoteText(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <button className="btn" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </Modal>
+
       {notes.map((note) => {
         return <NoteCard key={note._id} note={note} />;
       })}
