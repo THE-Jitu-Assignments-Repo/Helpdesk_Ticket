@@ -104,10 +104,12 @@ function SingleTicket() {
         style={customStyles}
         contentLabel="Add Note"
       >
+        <div className="note-head">
         <h2>Add Note</h2>
-        <button className="btn-close" onClick={closeModal}>
-          <FaWindowClose />
+        <button className="btn-close-tag" onClick={closeModal}>
+          <FaWindowClose size={20} />
         </button>
+        </div>
         <form onSubmit={handleNote}>
           <div className="form-group">
             <textarea
