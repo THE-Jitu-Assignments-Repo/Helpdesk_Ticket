@@ -4,18 +4,19 @@ import {
 import axios from "axios";
 
 export const getNotes = createAsyncThunk(
-    "notes/getnote",
+    "notes/getnotes",
     async (ticketID, {
-        getstate,
+        getState,
         rejectWithValue
     }) => {
         try {
-            const token = getstate().auth.user.Token
+            const token = getState().auth.user.Token
             const response = await axios.get(`http://localhost:3002/api/tickets/${ticketID}/notes`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
+            console.log(response.data);
             return response.data
         } catch (error) {
 

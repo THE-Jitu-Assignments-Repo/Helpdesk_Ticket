@@ -30,9 +30,12 @@ function Ticket() {
           <div>product</div>
           <div>status</div>
         </div>
+        <div className="ticket-display">
+
         {tickets.map((ticket) => {
           return <TicketCard key={ticket._id} item={ticket} />;
         })}
+        </div>
       </div>
     </>
   );

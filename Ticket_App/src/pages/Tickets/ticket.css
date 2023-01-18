@@ -87,3 +87,6 @@
 .btn-t:hover {
   transform: scale(0.98);
 }
+/* .ticket-display{
+  overflow-y: scroll;
+} */

@@ -38,7 +38,7 @@ export const noteSlice = createSlice({
     }
 })
 export const {
-    reset
+    reset:noteReset
 } = noteSlice.actions
 
 export default noteSlice.reducer
