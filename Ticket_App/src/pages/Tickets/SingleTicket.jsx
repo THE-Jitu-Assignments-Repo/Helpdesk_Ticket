@@ -15,7 +15,7 @@ import { createNote, getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
 import Modal from "react-modal";
 import customStyles from "./CustomStyles";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaWindowClose } from "react-icons/fa";
 
 Modal.setAppElement("#root");
 

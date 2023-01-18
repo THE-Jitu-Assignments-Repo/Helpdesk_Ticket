@@ -1,4 +1,4 @@
-export const customStyles ={
+export  const customStyles ={
     content:{
         width: '600px',
         top: '50%',
@@ -10,3 +10,5 @@ export const customStyles ={
         position: 'relative'
     },
 }
+
+export default customStyles
