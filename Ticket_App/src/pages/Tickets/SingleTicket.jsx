@@ -11,7 +11,7 @@ import {
 import Spinner from "../../components/spinner/Spinner";
 import Back from "../../components/backButton/Back";
 import { useNavigate } from "react-router-dom";
-import { getNotes } from "../../features/note/noteActions";
+import { createNote, getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
 import Modal from "react-modal";
 import customStyles from "./CustomStyles";
@@ -65,6 +65,7 @@ function SingleTicket() {
 
   const handleNote = (e) => {
     e.preventDefault();
+    dispatch(createNote({noteText, ticketID}))
     closeModal();
   };
   return (
