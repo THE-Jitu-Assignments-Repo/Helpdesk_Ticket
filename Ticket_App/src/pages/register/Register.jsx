@@ -37,19 +37,27 @@ function Register() {
     dispatch(RegisterUser({username,email,password}))
   }
   
-  useEffect(()=>{
-    if(isError){
-      setErr(message)
-    }
-    if(isSuccess){
-      navigate('/login')
-    }
-    dispatch(reset())
-  }, [isSuccess, isError, message, navigate, dispatch])
+  // useEffect(()=>{
+  //   if(isError){
+  //     setErr(message)
+  //   }
+  //   if(isSuccess){
+  //     navigate('/login')
+  //   }
+  //   dispatch(reset())
+  // }, [isSuccess, isError, message, navigate, dispatch])
 
   // if(isLoading){
   //   return <Spinner />
   // }
+
+  if(isError){
+    setErr(message)
+  }
+  if(isSuccess){
+    dispatch(reset())
+    navigate('/login')
+  }
 
   return (
     <div className="register">
