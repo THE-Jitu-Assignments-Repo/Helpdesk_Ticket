@@ -24,6 +24,7 @@ useEffect(() => {
 
       if (decodedJwt.exp * 1000 < Date.now()) {
         dispatch(logoutUser())
+        console.log("token expired");
       }
     }
   }, [dispatch]);
