@@ -31,10 +31,11 @@ function Register() {
 
   const registerUser=(e)=>{
     e.preventDefault()
-    if(password !== confirmed_password){
+    if(password !== confirmed_password || password && confirmed_password == ''){
       setErr('Passwords do not match!')
     }
     dispatch(RegisterUser({username,email,password}))
+    navigate('/login')
   }
   
   // useEffect(()=>{
@@ -56,7 +57,6 @@ function Register() {
   }
   if(isSuccess){
     dispatch(reset())
-    navigate('/login')
   }
 
   return (
