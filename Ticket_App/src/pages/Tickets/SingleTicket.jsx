@@ -87,6 +87,9 @@ function SingleTicket() {
               {ticket.status}
             </span>
           </h2>
+          <h3>
+            Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
+          </h3>
         </div>
       </section>
      </div>
