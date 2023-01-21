@@ -91,6 +91,10 @@ function SingleTicket() {
             Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
           </h3>
         </div>
+        <div className="ticket-desc">
+            <h3>Description of the issue</h3>
+            <p>{ticket.description}</p>
+          </div>
       </section>
      </div>
 
