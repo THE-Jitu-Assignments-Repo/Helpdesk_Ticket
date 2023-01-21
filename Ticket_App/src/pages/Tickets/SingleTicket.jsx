@@ -75,6 +75,9 @@ function SingleTicket() {
         <h2>
           Product: <span>{ticket.product}</span>
         </h2>
+        <span className={`status status-${ticket.status}`}>
+              {ticket.status}
+            </span>
       </div>
      </div>
 
