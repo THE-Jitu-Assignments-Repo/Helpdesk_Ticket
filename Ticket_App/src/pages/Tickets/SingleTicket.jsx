@@ -65,79 +65,89 @@ function SingleTicket() {
 
   const handleNote = (e) => {
     e.preventDefault();
-    dispatch(createNote({noteText, ticketID}))
+    dispatch(createNote({ noteText, ticketID }));
     closeModal();
   };
   return (
-    <div className="ticket-page">
-      <header className="ticket-head">
-        <Back url="/tickets" className="back" />
+    <>
+     <div className="ticket--new">
+      <div className="ticket--header">
         <h2>
-          TIcket ID: {ticket._id}
-          <span className={`status status-${ticket.status}`}>
-            {ticket.status}
-          </span>
+          Product: <span>{ticket.product}</span>
         </h2>
-        <h3>Product: {ticket.product}</h3>
-        <h3>
-          Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
-        </h3>
-        <hr />
-        <div className="ticket-desc">
-          <h3>Description of the issue</h3>
-          <p>{ticket.description}</p>
-        </div>
-        <h2>Notes:</h2>
-      </header>
+      </div>
+     </div>
 
-      {ticket.status !== "close" && (
-        <button className="btn" onClick={openModal}>
-          {" "}
-          <FaPlus />
-          Add Note
-        </button>
-      )}
-
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Add Note"
-      >
-        <div className="note-head">
-        <h2>Add Note</h2>
-        <button className="btn-close-tag" onClick={closeModal}>
-          <FaWindowClose size={20} />
-        </button>
-        </div>
-        <form onSubmit={handleNote}>
-          <div className="form-group">
-            <textarea
-              name="noteText"
-              placeholder="Note text"
-              className="form-control"
-              value={noteText}
-              onChange={(e) => setNoteText(e.target.value)}
-            ></textarea>
+      <div className="ticket-page">
+        <header className="ticket-head">
+          <Back url="/tickets" className="back" />
+          <h2>
+            TIcket ID: {ticket._id}
+            <span className={`status status-${ticket.status}`}>
+              {ticket.status}
+            </span>
+          </h2>
+          <h3>Product: {ticket.product}</h3>
+          <h3>
+            Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
+          </h3>
+          <hr />
+          <div className="ticket-desc">
+            <h3>Description of the issue</h3>
+            <p>{ticket.description}</p>
           </div>
-          <div className="form-group">
-            <button className="btn" type="submit">
-              Submit
+          <h2>Notes:</h2>
+        </header>
+
+        {ticket.status !== "close" && (
+          <button className="btn" onClick={openModal}>
+            {" "}
+            <FaPlus />
+            Add Note
+          </button>
+        )}
+
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Add Note"
+        >
+          <div className="note-head">
+            <h2>Add Note</h2>
+            <button className="btn-close-tag" onClick={closeModal}>
+              <FaWindowClose size={20} />
             </button>
           </div>
-        </form>
-      </Modal>
+          <form onSubmit={handleNote}>
+            <div className="form-group">
+              <textarea
+                name="noteText"
+                placeholder="Note text"
+                className="form-control"
+                value={noteText}
+                onChange={(e) => setNoteText(e.target.value)}
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <button className="btn" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </Modal>
 
-      {notes.map((note) => {
-        return <NoteCard key={note._id} note={note} />;
-      })}
+        {notes.map((note) => {
+          return <NoteCard key={note._id} note={note} />;
+        })}
 
-      {ticket.status !== "closed" && (
-        <button className="btn-t btn-danger btn-block" onClick={handleClose}>
-          Close Ticket
-        </button>
-      )}
-    </div>
+        {ticket.status !== "closed" && (
+          <button className="btn-t btn-danger btn-block" onClick={handleClose}>
+            Close Ticket
+          </button>
+        )}
+      </div>
+    </>
   );
 }
 
