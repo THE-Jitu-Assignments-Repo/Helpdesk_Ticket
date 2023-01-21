@@ -79,6 +79,16 @@ function SingleTicket() {
               {ticket.status}
             </span>
       </div>
+      <section className="ticket--content">
+        <div className="ticket--body">
+          <h2>
+            TIcket ID: {ticket._id}
+            <span className={`status status-${ticket.status}`}>
+              {ticket.status}
+            </span>
+          </h2>
+        </div>
+      </section>
      </div>
 
       <div className="ticket-page">
