@@ -60,7 +60,7 @@ useEffect(()=>{
     dispatch(reset())
   }
 
-  return (
+  {isLoading ? <Spinner /> : (
     <div className="register">
       <FaUser size={40} />
       <span>Register to HelpDesk Tickets</span>
