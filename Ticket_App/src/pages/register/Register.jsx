@@ -39,7 +39,10 @@ function Register() {
         .then(() => {
           navigate('/login')
         })
-        .catch(setErr(error))
+        .catch((error)=>{
+          setErr(error)
+          // navigate('/register')
+        })
   }
   
 // useEffect(()=>{
@@ -57,12 +60,27 @@ function Register() {
   //   return <Spinner />
   // }
 
-  if(isError){
-    setErr(message)
-  }
-  if(isSuccess){
-    dispatch(reset())
-  }
+  const handleError = useCallback(() => {
+    if (isError) {
+      setErr(message);
+    }
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/login");
+    }
+  }, [isError, isSuccess, message, navigate, dispatch]);
+
+useEffect(() => {
+    handleError()
+  }, [handleError]);
+
+
+  // if(isError){
+  //   setErr(message)
+  // }
+  // if(isSuccess){
+  //   dispatch(reset())
+  // }
 
 
 return (
