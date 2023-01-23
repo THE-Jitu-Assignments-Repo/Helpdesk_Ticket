@@ -39,17 +39,18 @@ function Register() {
         .then(() => {
           navigate('/login')
         })
+        .catch(setErr(error))
   }
   
-useEffect(()=>{
-  if(isError){
-    setErr(message)
-  }
-  if(isSuccess){
-    navigate('/login')
-  }
-  dispatch(reset())
-}, [isSuccess, isError, message, navigate, dispatch])
+// useEffect(()=>{
+//   if(isError){
+//     setErr(message)
+//   }
+//   if(isSuccess){
+//     navigate('/login')
+//   }
+//   dispatch(reset())
+// }, [isSuccess, isError, message, navigate, dispatch])
 
 
   // if(isLoading){
