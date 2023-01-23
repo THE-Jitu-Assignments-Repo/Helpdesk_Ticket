@@ -32,8 +32,9 @@ useEffect(() => {
   return (
     <div className="header">
       <div className="header_tag">
-        <Link to="/">
+        <Link to="/" style={{display: 'flex', gap:'5'}}>
           <h1>HelpDesk</h1>
+          <img src="https://imgs.search.brave.com/tye20r-9LIO1ZobUfddbN4RPid8CQh3up28MfeqaRqw/rs:fit:512:512:1/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy9oZWxw/ZGVzay1pY29uLXBu/Zy9oZWxwZGVzay1p/Y29uLXBuZy0yMS5q/cGc" alt="" width={40} height={40} />
         </Link>
       </div>
       <ul className="links">
