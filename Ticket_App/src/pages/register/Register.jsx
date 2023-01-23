@@ -10,10 +10,12 @@ import { reset } from "../../features/Auth/authSlice";
 import "./register.css";
 
 function Register() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const {isError, isLoading, isSuccess, message} = useSelector(state=>state.auth)
-  const [err, setErr]=useState('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError, isLoading, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+  const [err, setErr] = useState("");
   const [regData, setRegData] = useState({
     username: "",
     email: "",
@@ -22,39 +24,40 @@ function Register() {
   });
   const { username, email, password, confirmed_password } = regData;
 
-
   const handleChange = (e) => {
-    let {name, value} = e.target;
+    let { name, value } = e.target;
     setRegData((prev) => ({ ...prev, [name]: value }));
-    setErr('')
+    setErr("");
   };
 
-  const registerUser=(e)=>{
-    e.preventDefault()
-    if(password !== confirmed_password || password && confirmed_password == ''){
-      setErr('Passwords do not match!')
+  const registerUser = (e) => {
+    e.preventDefault();
+    if (
+      password !== confirmed_password ||
+      (password && confirmed_password == "")
+    ) {
+      setErr("Passwords do not match!");
     }
-    dispatch(RegisterUser({username,email,password}))
-    .unwrap()
-        .then(() => {
-          navigate('/login')
-        })
-        .catch((error)=>{
-          setErr(error)
-          // navigate('/register')
-        })
-  }
-  
-// useEffect(()=>{
-//   if(isError){
-//     setErr(message)
-//   }
-//   if(isSuccess){
-//     navigate('/login')
-//   }
-//   dispatch(reset())
-// }, [isSuccess, isError, message, navigate, dispatch])
+    dispatch(RegisterUser({ username, email, password }))
+      .unwrap()
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        setErr(error);
+        // navigate('/register')
+      });
+  };
 
+  // useEffect(()=>{
+  //   if(isError){
+  //     setErr(message)
+  //   }
+  //   if(isSuccess){
+  //     navigate('/login')
+  //   }
+  //   dispatch(reset())
+  // }, [isSuccess, isError, message, navigate, dispatch])
 
   // if(isLoading){
   //   return <Spinner />
@@ -70,10 +73,9 @@ function Register() {
     }
   }, [isError, isSuccess, message, navigate, dispatch]);
 
-useEffect(() => {
-    handleError()
+  useEffect(() => {
+    handleError();
   }, [handleError]);
-
 
   // if(isError){
   //   setErr(message)
@@ -82,17 +84,30 @@ useEffect(() => {
   //   dispatch(reset())
   // }
 
-
-return (
-  <>
-    {isLoading ? <Spinner /> : 
-      (
+  return (
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
         <div className="register">
           <FaUser size={40} />
           <span>Register to HelpDesk Tickets</span>
-    
+
           <form className="form" onSubmit={registerUser}>
-            {err? <span style={{color:'red', display:'flex', alignItems:'center', gap:'4px'}}><FaWindowClose /> {err}</span>: ''}
+            {err ? (
+              <span
+                style={{
+                  color: "red",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                }}
+              >
+                <FaWindowClose /> {err}
+              </span>
+            ) : (
+              ""
+            )}
             <input
               type="text"
               name="username"
@@ -121,7 +136,7 @@ return (
               value={confirmed_password}
               onChange={handleChange}
             />
-    
+
             <div className="form_button">
               <button className="btn">Register</button>
             </div>
@@ -133,8 +148,8 @@ return (
             </span>
           </form>
         </div>
-      )
-    }
-  </>
-)}
+      )}
+    </>
+  );
+}
 export default Register;
