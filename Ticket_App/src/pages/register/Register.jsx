@@ -35,7 +35,10 @@ function Register() {
       setErr('Passwords do not match!')
     }
     dispatch(RegisterUser({username,email,password}))
-    navigate('/login')
+    .unwrap()
+        .then(() => {
+          navigate('/login')
+        })
   }
   
 useEffect(()=>{
