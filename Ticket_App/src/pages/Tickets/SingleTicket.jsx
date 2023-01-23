@@ -75,7 +75,7 @@ function SingleTicket() {
         <h2>
           Product: <span>{ticket.product}</span>
         </h2>
-        <span className={`status status-${ticket.status}`}>
+        <span>
               {ticket.status}
             </span>
       </div>
@@ -83,9 +83,6 @@ function SingleTicket() {
         <div className="ticket--body">
           <h2>
             TIcket ID: {ticket._id}
-            <span className={`status status-${ticket.status}`}>
-              {ticket.status}
-            </span>
           </h2>
           <h3>
             Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
