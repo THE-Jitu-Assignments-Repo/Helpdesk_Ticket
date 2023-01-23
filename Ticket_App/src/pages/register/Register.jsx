@@ -39,14 +39,14 @@ function Register() {
       setErr("Passwords do not match!");
     }
     dispatch(RegisterUser({ username, email, password }))
-      .unwrap()
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        setErr(error);
+      // .unwrap()
+      // .then(() => {
+      //   navigate("/login");
+      // })
+      // .catch((error) => {
+      //   setErr(error);
         // navigate('/register')
-      });
+      // });
   };
 
   // useEffect(()=>{
