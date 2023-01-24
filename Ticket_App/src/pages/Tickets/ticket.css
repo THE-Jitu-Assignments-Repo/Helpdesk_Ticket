@@ -56,7 +56,7 @@
   margin-bottom: 20px;
   /* border: 2px solid red; */
 }
-.back{
+.back {
   /* border: 2px solid red; */
   display: flex;
   margin: 0 auto;
@@ -64,10 +64,9 @@
   align-items: flex-end;
   justify-content: flex-start;
 }
-.h-ticket{
-   text-align: center;
+.h-ticket {
+  text-align: center;
 }
-
 
 .btn-t {
   padding: 5px 10px;
@@ -91,15 +90,44 @@
   overflow-y: scroll;
 } */
 
-
-
-.btn-close-tag{
+.btn-close-tag {
   cursor: pointer;
   color: red;
   outline: none;
 }
 
-
 /* new ticket design  */
 
+.ticket--new {
+  margin: 0 auto;
+  /* border: 2px solid red; */
+  padding: 20px;
+  width: 60%;
+  height: 100vh auto;
+  backdrop-filter: blur(10px) grayscale(0.5) opacity(0.8);
+  box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.051),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.076),
+    100px 100px 80px rgba(0, 0, 0, 0.13);
+}
 
+.ticket--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+.ticket--content{
+  /* border: 2px solid red; */
+  padding: 40px;
+}
+.new-btn{
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.status--new{
+  display: flex;
+  gap: 5px;
+  font-size: 18px;
+  /* border: 2px solid red; */
+}

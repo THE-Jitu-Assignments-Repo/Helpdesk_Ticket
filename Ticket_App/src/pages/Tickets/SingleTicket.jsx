@@ -70,30 +70,52 @@ function SingleTicket() {
   };
   return (
     <>
-     <div className="ticket--new">
-      <div className="ticket--header">
-        <h2>
-          Product: <span>{ticket.product}</span>
-        </h2>
-        <span>
-              {ticket.status}
-            </span>
-      </div>
-      <section className="ticket--content">
-        <div className="ticket--body">
+      <div className="ticket--new">
+        <div className="ticket--header">
           <h2>
-            TIcket ID: {ticket._id}
+            Product: <span>{ticket.product}</span>
           </h2>
-          <h3>
-            Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
-          </h3>
+          <span className="status--new">status: <p className={`status status-${ticket.status}`}>{ticket.status}</p></span>
         </div>
-        <div className="ticket-desc">
+        <section className="ticket--content">
+          <div className="ticket--body">
+            <span>
+              <h3>TIcket ID:</h3> {ticket._id}
+            </span>
+            <span>
+              <h3>Date Submitted: </h3>
+              {new Date(ticket.createdAt).toLocaleString("en-US")}
+            </span>
+          </div>
+          <div className="ticket-desc">
             <h3>Description of the issue</h3>
             <p>{ticket.description}</p>
           </div>
-      </section>
-     </div>
+          <section>
+            {ticket.status !== "close" && (
+              <button className="btn new-btn" onClick={openModal}>
+                {" "}
+                <FaPlus />
+                Add Note
+              </button>
+            )}
+            {notes.map((note) => {
+              return <NoteCard key={note._id} note={note} />;
+            })}
+
+            {ticket.status !== "closed" && (
+              <button
+                className="btn-t btn-danger btn-block"
+                onClick={handleClose}
+              >
+                Close Ticket
+              </button>
+            )}
+          </section>
+
+          <Back url="/tickets" className="back" />
+        </section>
+      </div>
 
       <div className="ticket-page">
         <header className="ticket-head">
