@@ -519,4 +519,8 @@ h3 {
   .ticket-desc {
     word-wrap: break-word;
   }
+  .header_tag h1{
+    word-wrap: break-word;
+    object-fit: scale-down;
+  }
 }

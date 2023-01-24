@@ -130,7 +130,7 @@ function SingleTicket() {
 
       <article className="footer">
         <p>Click this button to download your ticket...</p>
-        <button className="btn-download" onClick={handlePrint}>Download Ticket</button>
+        <button className="btn-download" onClick={handlePrint}>Print Ticket</button>
       </article>
       <Modal
         isOpen={isOpen}
