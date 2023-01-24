@@ -41,7 +41,7 @@
 } */
 
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
 
 * {
   margin: 0;
@@ -342,8 +342,6 @@ h3 {
   right: 20px;
 }
 
-
-
 /* .form-group {
   margin-bottom: 10px;
 }
@@ -365,7 +363,7 @@ h3 {
   margin: 0 0 5px 3px;
 } */
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 280px) and (max-width: 820px) {
   .login {
     width: 80%;
   }
@@ -409,34 +407,116 @@ h3 {
     font-weight: 700;
   }
   .btn-reverse {
-  background: #fff;
-  color: #000;
-}
-.btn-back {
-  /* width: 6; */
-  margin-bottom: 20px;
-}
-.back{
-  justify-content: flex-start;
-}
-.ticket,
-.ticket-headings {
-  display: flex;
-  
-  /* flex-direction: column; */
+    background: #fff;
+    color: #000;
+  }
+  .btn-back {
+    /* width: 6; */
+    margin-bottom: 20px;
+  }
+  .back {
+    justify-content: flex-start;
+  }
+  .ticket,
+  .ticket-headings {
+    display: flex;
+
+    /* flex-direction: column; */
+  }
+
+  .ticket--new {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .ticket--header {
+    display: grid;
+    padding: 30px;
+  }
+  .note-date {
+    position: relative;
+  }
 }
 
-.ticket--new {
-  margin: 0 auto;
-  width: 100%;
-}
-.ticket--header {
-  display: grid;
-  padding: 30px;
-}
-.note-date{
-  position: relative;
-}
+@media screen and (max-width: 374px) {
+  .login {
+    width: 80%;
+  }
+  .register {
+    width: 80%;
+  }
+  .form input {
+    grid-template-columns: 1fr;
+  }
 
+  .form {
+    width: 80%;
+  }
 
+  .ticket-created h2,
+  .heading h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .heading-tag h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .heading p {
+    font-size: 1.3rem;
+  }
+  .heading-tag p {
+    font-size: 1.3rem;
+  }
+  .form-form-ticket {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .btn {
+    /* width: 80%; */
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .btn-reverse {
+    background: #fff;
+    color: #000;
+  }
+  .btn-back {
+    /* width: 6; */
+    margin-bottom: 20px;
+  }
+  .back {
+    justify-content: flex-start;
+  }
+  .ticket,
+  .ticket-headings {
+    display: flex;
+
+    /* flex-direction: column; */
+  }
+
+  .ticket--new {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .ticket--header {
+    display: grid;
+    padding: 30px;
+  }
+  .note-date {
+    position: relative;
+  }
+  .button-fix {
+    display: grid;
+    row-gap: 5px;
+  }
+  .ticket--body span {
+    word-wrap: break-word;
+  }
+  .ticket-desc {
+    word-wrap: break-word;
+  }
 }
