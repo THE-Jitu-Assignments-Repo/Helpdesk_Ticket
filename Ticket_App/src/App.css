@@ -435,6 +435,22 @@ h3 {
   .note-date {
     position: relative;
   }
+  .header{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header_tag{
+    padding-top: 8px;
+  }
+  .header_tag h1{
+    padding-top: 3px;
+    font-size: 24px;
+  }
+  .header_tag img{
+    padding-top: 2px;
+  }
 }
 
 @media screen and (max-width: 374px) {
@@ -518,9 +534,5 @@ h3 {
   }
   .ticket-desc {
     word-wrap: break-word;
-  }
-  .header_tag h1{
-    word-wrap: break-word;
-    object-fit: scale-down;
   }
 }
