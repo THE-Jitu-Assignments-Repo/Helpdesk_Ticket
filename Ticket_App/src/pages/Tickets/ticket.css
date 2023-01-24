@@ -69,7 +69,7 @@
 }
 
 .btn-t {
-  padding: 5px 10px;
+  padding: 10px;
   border: 1px solid #000;
   border-radius: 5px;
   background: #000;
@@ -160,4 +160,28 @@ box-shadow:
 }
 .btn-download:hover {
   transform: scale(0.98);
+}
+
+
+.button-fix{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 2px solid red; */
+  margin-bottom: 15px;
+}
+.del{
+  padding-left: 5px;
+  text-align: center;
+}
+
+.btn-del{
+  background-color: rgb(142, 35, 6);
+  outline: none;
+  border: none;
+  margin: 5px;
+}
+.btn-del:hover{
+  content: 'delete';
 }

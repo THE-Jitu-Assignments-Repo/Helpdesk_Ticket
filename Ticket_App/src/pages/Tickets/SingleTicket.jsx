@@ -15,7 +15,7 @@ import { createNote, getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
 import Modal from "react-modal";
 import customStyles from "./CustomStyles";
-import { FaPlus, FaWindowClose } from "react-icons/fa";
+import { FaPen, FaPenAlt, FaPlus, FaTrashAlt, FaWindowClose } from "react-icons/fa";
 
 Modal.setAppElement("#root");
 
@@ -72,10 +72,15 @@ function SingleTicket() {
     <>
       <div className="ticket--new">
         <div className="ticket--header">
+    <Back url="/tickets" className="back" />
           <h2>
-            Product: <span>{ticket.product}</span>
+            Product:{" "}
+            <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
           </h2>
-          <span className="status--new">status: <p className={`status status-${ticket.status}`}>{ticket.status}</p></span>
+          <span className="status--new">
+            status:{" "}
+            <p className={`status status-${ticket.status}`}>{ticket.status}</p>
+          </span>
         </div>
         <section className="ticket--content">
           <div className="ticket--body">
@@ -99,58 +104,58 @@ function SingleTicket() {
                 Add Note
               </button>
             )}
+
             {notes.map((note) => {
               return <NoteCard key={note._id} note={note} />;
             })}
-
+          </section>
+          <div className="button-fix">
             {ticket.status !== "closed" && (
-              <button
-                className="btn-t btn-danger btn-block"
-                onClick={handleClose}
-              >
+              <button className="btn-t btn-danger" onClick={handleClose}>
                 Close Ticket
               </button>
             )}
-          </section>
 
-          <Back url="/tickets" className="back" />
+           {ticket.status !== 'closed' && <button className="btn-t"><FaPenAlt /><span className="del">Edit</span> </button>}
+            <button className="btn-t btn-del"><FaTrashAlt/><span className="del">Delete</span></button>
+          </div>
+
         </section>
       </div>
 
       <article className="footer">
-        <p>Click this button to download your ticket...
-        </p><button className="btn-download">Download Ticket</button>
+        <p>Click this button to download your ticket...</p>
+        <button className="btn-download">Download Ticket</button>
       </article>
-        <Modal
-          isOpen={isOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Add Note"
-        >
-          <div className="note-head">
-            <h2>Add Note</h2>
-            <button className="btn-close-tag" onClick={closeModal}>
-              <FaWindowClose size={20} />
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Add Note"
+      >
+        <div className="note-head">
+          <h2>Add Note</h2>
+          <button className="btn-close-tag" onClick={closeModal}>
+            <FaWindowClose size={20} />
+          </button>
+        </div>
+        <form onSubmit={handleNote}>
+          <div className="form-group">
+            <textarea
+              name="noteText"
+              placeholder="Note text"
+              className="form-control"
+              value={noteText}
+              onChange={(e) => setNoteText(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <button className="btn" type="submit">
+              Submit
             </button>
           </div>
-          <form onSubmit={handleNote}>
-            <div className="form-group">
-              <textarea
-                name="noteText"
-                placeholder="Note text"
-                className="form-control"
-                value={noteText}
-                onChange={(e) => setNoteText(e.target.value)}
-              ></textarea>
-            </div>
-            <div className="form-group">
-              <button className="btn" type="submit">
-                Submit
-              </button>
-            </div>
-          </form>
-        </Modal>
-
+        </form>
+      </Modal>
     </>
   );
 }
