@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -21,6 +21,7 @@ Modal.setAppElement("#root");
 
 function SingleTicket() {
   const [isOpen, setIsOpen] = useState(false);
+  const printRef = useRef(null)
   const [noteText, setNoteText] = useState("");
   const { ticket, isLoading, isSuccess, message, isError } = useSelector(
     (state) => state.ticket
@@ -29,6 +30,10 @@ function SingleTicket() {
   const [err, setErr] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handlePrint = () => {
+    window.print(printRef.current);
+  };
 
   const { ticketID } = useParams();
 
@@ -70,7 +75,7 @@ function SingleTicket() {
   };
   return (
     <>
-      <div className="ticket--new">
+      <div className="ticket--new"  ref={printRef}>
         <div className="ticket--header">
     <Back url="/tickets" className="back" />
           <h2>
@@ -125,7 +130,7 @@ function SingleTicket() {
 
       <article className="footer">
         <p>Click this button to download your ticket...</p>
-        <button className="btn-download">Download Ticket</button>
+        <button className="btn-download" onClick={handlePrint}>Download Ticket</button>
       </article>
       <Modal
         isOpen={isOpen}
