@@ -21,8 +21,8 @@ function Ticket() {
   }
 
   return (
-    <>
-      <Back url="/" />
+    <section className="all-T">
+      <Back url="/" className='back'/>
       <h1 className="h-ticket">Tickets</h1>
       <div className="tickets">
         <div className="ticket-headings">
@@ -37,7 +37,7 @@ function Ticket() {
         })}
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

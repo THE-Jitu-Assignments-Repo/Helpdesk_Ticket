@@ -6,6 +6,10 @@
   padding: 8px 8px 0px 5px;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
 }
 .header_tag {
   font-size: 14px;
