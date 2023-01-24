@@ -425,4 +425,18 @@ h3 {
   
   /* flex-direction: column; */
 }
+
+.ticket--new {
+  margin: 0 auto;
+  width: 100%;
+}
+.ticket--header {
+  display: grid;
+  padding: 30px;
+}
+.note-date{
+  position: relative;
+}
+
+
 }
