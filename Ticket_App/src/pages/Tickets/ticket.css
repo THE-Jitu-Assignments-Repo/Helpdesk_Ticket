@@ -92,8 +92,9 @@
 
 .btn-close-tag {
   cursor: pointer;
-  color: red;
+  color: #000;
   outline: none;
+  border: none;
 }
 
 /* new ticket design  */

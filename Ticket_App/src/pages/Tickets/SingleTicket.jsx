@@ -141,7 +141,7 @@ function SingleTicket() {
         <div className="note-head">
           <h2>Add Note</h2>
           <button className="btn-close-tag" onClick={closeModal}>
-            <FaWindowClose size={20} />
+            <FaWindowClose size={25} />
           </button>
         </div>
         <form onSubmit={handleNote}>
