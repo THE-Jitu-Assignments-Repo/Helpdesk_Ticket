@@ -7,6 +7,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   jsx: 'babel',
   plugins: [
+    [react()],
     ['babel-plugin-import', {
       'libraryName': 'antd',
       'libraryDirectory': 'es',
