@@ -117,35 +117,10 @@ function SingleTicket() {
         </section>
       </div>
 
-      <div className="ticket-page">
-        <header className="ticket-head">
-          <Back url="/tickets" className="back" />
-          <h2>
-            TIcket ID: {ticket._id}
-            <span className={`status status-${ticket.status}`}>
-              {ticket.status}
-            </span>
-          </h2>
-          <h3>Product: {ticket.product}</h3>
-          <h3>
-            Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
-          </h3>
-          <hr />
-          <div className="ticket-desc">
-            <h3>Description of the issue</h3>
-            <p>{ticket.description}</p>
-          </div>
-          <h2>Notes:</h2>
-        </header>
-
-        {ticket.status !== "close" && (
-          <button className="btn" onClick={openModal}>
-            {" "}
-            <FaPlus />
-            Add Note
-          </button>
-        )}
-
+      <article className="footer">
+        <p>Click this button to download your ticket...
+        </p><button className="btn-download">Download Ticket</button>
+      </article>
         <Modal
           isOpen={isOpen}
           onRequestClose={closeModal}
@@ -176,16 +151,6 @@ function SingleTicket() {
           </form>
         </Modal>
 
-        {notes.map((note) => {
-          return <NoteCard key={note._id} note={note} />;
-        })}
-
-        {ticket.status !== "closed" && (
-          <button className="btn-t btn-danger btn-block" onClick={handleClose}>
-            Close Ticket
-          </button>
-        )}
-      </div>
     </>
   );
 }

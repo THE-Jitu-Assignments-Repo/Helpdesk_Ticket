@@ -101,13 +101,13 @@
 .ticket--new {
   margin: 0 auto;
   /* border: 2px solid red; */
-  padding: 20px;
   width: 60%;
-  height: 100vh auto;
-  backdrop-filter: blur(10px) grayscale(0.5) opacity(0.8);
-  box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.051),
-    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.076),
-    100px 100px 80px rgba(0, 0, 0, 0.13);
+  backdrop-filter: blur(10px);
+box-shadow:
+  6.7px 2.7px 20px rgba(0, 0, 0, 0.06),
+  22.3px 8.9px 67.2px rgba(0, 0, 0, 0.035),
+  100px 40px 301px rgba(0, 0, 0, 0.024)
+;
 }
 
 .ticket--header {
@@ -130,4 +130,34 @@
   gap: 5px;
   font-size: 18px;
   /* border: 2px solid red; */
+}
+
+.footer {
+  
+  /* display: flex; */
+  /* border: 2px solid red; */
+  padding: 40px;
+  margin-top: 40px;
+  position: sticky;
+  top: 95vh;
+  text-align: center;
+}
+
+
+.btn-download{
+    padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.btn-download:hover {
+  transform: scale(0.98);
 }
