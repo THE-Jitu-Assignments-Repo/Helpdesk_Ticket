@@ -7,14 +7,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   jsx: 'babel',
   plugins: [
-    'babel-plugin-import',
-    [
-      '@babel/plugin-transform-react-jsx',
-      {
-        pragma: 'h',
-        pragmaFrag: 'Fragment',
-        useBuiltIns: true
-      },
-    ],
+    ['babel-plugin-import', {
+      'libraryName': 'antd',
+      'libraryDirectory': 'es',
+      'style': 'css'
+    }],
+    ['@babel/plugin-transform-react-jsx', {
+      pragma: 'h',
+      pragmaFrag: 'Fragment',
+      useBuiltIns: true
+    }]
   ],
+
 })
