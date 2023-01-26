@@ -77,6 +77,31 @@ export const getSingleTicket = createAsyncThunk(
 )
 
 
+export const DeleteTicket = createAsyncThunk(
+    "ticket/getSingleTicket",
+    async (ticketID, {
+        getState,
+        rejectWithValue
+    }) => {
+        try {
+            const token = getState().auth.user.Token
+            const response = await axios.delete(`http://localhost:3002/api/tickets/${ticketID}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            return response.data
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data.message : error.message || error.toString())
+
+        }
+    }
+)
+
+
+
+
 // update status of a ticket => close
 export const closeTicket = createAsyncThunk(
     "ticket/closeTicket",
