@@ -57,7 +57,6 @@ export const ticketSlice = createSlice({
             builder.addCase(DeleteTicket.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.ticket = action.payload
             }),
             builder.addCase(DeleteTicket.rejected, (state, action) => {
                 state.isLoading = false
