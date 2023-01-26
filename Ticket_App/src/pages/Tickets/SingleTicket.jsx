@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
   closeTicket,
+  DeleteTicket,
   getSingleTicket,
 } from "../../features/Tickets/ticketActions";
 import Spinner from "../../components/spinner/Spinner";
@@ -122,7 +123,7 @@ function SingleTicket() {
             )}
 
            {ticket.status !== 'closed' && <button className="btn-t"><FaPenAlt /><span className="del">Edit</span> </button>}
-            <button className="btn-t btn-del"><FaTrashAlt/><span className="del">Delete</span></button>
+            <button className="btn-t btn-del" onClick={()=> dispatch(DeleteTicket(ticketID))}><FaTrashAlt/><span className="del">Delete</span></button>
           </div>
 
         </section>

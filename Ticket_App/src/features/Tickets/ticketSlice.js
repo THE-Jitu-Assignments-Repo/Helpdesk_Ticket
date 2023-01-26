@@ -51,19 +51,6 @@ export const ticketSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             }),
-            builder.addCase(getSingleTicket.pending, (state, action) => {
-                state.isLoading = true
-            }),
-            builder.addCase(getSingleTicket.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isSuccess = true
-                state.ticket = action.payload
-            }),
-            builder.addCase(getSingleTicket.rejected, (state, action) => {
-                state.isLoading = false
-                state.isError = true
-                state.message = action.payload
-            }),
             builder.addCase(DeleteTicket.pending, (state, action) => {
                 state.isLoading = true
             }),
