@@ -16,13 +16,19 @@ import { createNote, getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
 import Modal from "react-modal";
 import customStyles from "./CustomStyles";
-import { FaPen, FaPenAlt, FaPlus, FaTrashAlt, FaWindowClose } from "react-icons/fa";
+import {
+  FaPen,
+  FaPenAlt,
+  FaPlus,
+  FaTrashAlt,
+  FaWindowClose,
+} from "react-icons/fa";
 
 Modal.setAppElement("#root");
 
 function SingleTicket() {
   const [isOpen, setIsOpen] = useState(false);
-  const printRef = useRef(null)
+  const printRef = useRef(null);
   const [noteText, setNoteText] = useState("");
   const { ticket, isLoading, isSuccess, message, isError } = useSelector(
     (state) => state.ticket
@@ -76,9 +82,9 @@ function SingleTicket() {
   };
   return (
     <>
-      <div className="ticket--new"  ref={printRef}>
+      <div className="ticket--new" ref={printRef}>
         <div className="ticket--header">
-    <Back url="/tickets" className="back" />
+          <Back url="/tickets" className="back" />
           <h2>
             Product:{" "}
             <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
@@ -122,16 +128,28 @@ function SingleTicket() {
               </button>
             )}
 
-           {ticket.status !== 'closed' && <button className="btn-t"><FaPenAlt /><span className="del">Edit</span> </button>}
-            <button className="btn-t btn-del" onClick={()=>dispatch(DeleteTicket(ticket._id))}><FaTrashAlt/><span className="del">Delete</span></button>
+            {ticket.status !== "closed" && (
+              <button className="btn-t">
+                <FaPenAlt />
+                <span className="del">Edit</span>{" "}
+              </button>
+            )}
+            <button
+              className="btn-t btn-del"
+              onClick={() => {dispatch(DeleteTicket(ticket._id)), navigate('/tickets')}}
+            >
+              <FaTrashAlt />
+              <span className="del">Delete</span>
+            </button>
           </div>
-
         </section>
       </div>
 
       <article className="footer">
         <p>Click this button to download your ticket...</p>
-        <button className="btn-download" onClick={handlePrint}>Print Ticket</button>
+        <button className="btn-download" onClick={handlePrint}>
+          Print Ticket
+        </button>
       </article>
       <Modal
         isOpen={isOpen}

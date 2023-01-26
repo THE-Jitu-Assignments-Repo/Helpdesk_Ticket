@@ -51,23 +51,42 @@ export const ticketSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             }),
-            builder.addCase(DeleteTicket.pending, (state, action) => {
+
+
+             builder.addCase(getSingleTicket.pending, (state, action) => {
                 state.isLoading = true
             }),
-            builder.addCase(DeleteTicket.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isSuccess = true
-            }),
-            builder.addCase(DeleteTicket.rejected, (state, action) => {
+            builder.addCase(getSingleTicket.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
             }),
+            builder.addCase(getSingleTicket.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.ticket = action.payload
+            }),
+
+
+
             // note: to prevent manual refresh for updated status
             builder.addCase(closeTicket.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.tickets.map((ticket) => ticket._id === action.payload._id ? ticket.status = 'closed' : ticket)
             })
+
+            // builder.addCase(DeleteTicket.pending, (state, action) => {
+            //     state.isLoading = true
+            // })
+            // builder.addCase(DeleteTicket.fulfilled, (state, action) => {
+            //     state.isLoading = false
+            //     state.isSuccess = true
+            // }),
+            // builder.addCase(DeleteTicket.rejected, (state, action) => {
+            //     state.isLoading = false
+            //     state.isError = true
+            //     state.message = action.payload
+            // })
     }
 })
 
