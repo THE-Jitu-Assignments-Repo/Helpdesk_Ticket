@@ -102,14 +102,14 @@ module.exports = {
             const user = await User.findById(req.info._id)
 
             if (!user) {
-                res.status(401).json({
+               return res.status(401).json({
                     message: "user not Found"
                 })
             }
 
             const singleTicket = await Ticket.findById(req.params.id)
             if (!singleTicket) {
-                res.status(404).json({
+                return res.status(404).json({
                     message: "Ticket not Found"
                 })
             }
@@ -121,7 +121,7 @@ module.exports = {
 
             await singleTicket.remove()
 
-            res.status(201).json({
+           return res.status(201).json({
                 message: "Deleted"
             })
 
