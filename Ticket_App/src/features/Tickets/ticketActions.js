@@ -3,6 +3,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const baseUrl = 'https://helpdesk-t-api.onrender.com'
 
 // create a ticket
 export const createTicket = createAsyncThunk(
@@ -15,7 +16,7 @@ export const createTicket = createAsyncThunk(
         try {
             const token = getState().auth.user.Token
 
-            const response = await axios.post('http://localhost:3002/api/tickets', ticketDetails, {
+            const response = await axios.post(baseUrl+'/api/tickets', ticketDetails, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -40,7 +41,7 @@ export const getTickets = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.get('http://localhost:3002/api/tickets', {
+            const response = await axios.get(baseUrl+'/api/tickets', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -62,7 +63,7 @@ export const getSingleTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.get(`http://localhost:3002/api/tickets/${ticketID}`, {
+            const response = await axios.get(baseUrl+`/api/tickets/${ticketID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -85,7 +86,7 @@ export const DeleteTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.delete(`http://localhost:3002/api/tickets/${ticketID}`, {
+            const response = await axios.delete(baseUrl+`/api/tickets/${ticketID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -111,7 +112,7 @@ export const closeTicket = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.put(`http://localhost:3002/api/tickets/${ticketID}`, {
+            const response = await axios.put(baseUrl+`/api/tickets/${ticketID}`, {
                 status: 'closed'
             }, {
                 headers: {

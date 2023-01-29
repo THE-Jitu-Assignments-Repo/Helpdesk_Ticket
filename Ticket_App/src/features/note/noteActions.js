@@ -3,6 +3,9 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const baseUrl = 'https://helpdesk-t-api.onrender.com'
+
+
 export const getNotes = createAsyncThunk(
     "notes/getnotes",
     async (ticketID, {
@@ -11,7 +14,7 @@ export const getNotes = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.get(`http://localhost:3002/api/tickets/${ticketID}/notes`, {
+            const response = await axios.get(baseUrl+`/api/tickets/${ticketID}/notes`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -34,7 +37,7 @@ export const createNote = createAsyncThunk(
     }) => {
         try {
             const token = getState().auth.user.Token
-            const response = await axios.post(`http://localhost:3002/api/tickets/${ticketID}/notes`, {
+            const response = await axios.post(baseUrl+`/api/tickets/${ticketID}/notes`, {
                 text: noteText
             }, {
                 headers: {
