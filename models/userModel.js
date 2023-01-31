@@ -15,6 +15,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, "Please provide a password"],
+        min: 8
     }, 
     // incase of any admin
     isAdmin: {
