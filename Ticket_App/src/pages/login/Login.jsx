@@ -32,7 +32,7 @@ function Login() {
       [name]: value,
     }));
     // dispatch(reset())
-    setErr('')
+    setErr("");
   };
 
   const submitLogin = (e) => {
@@ -50,8 +50,8 @@ function Login() {
     dispatch(reset());
   }, [isSuccess, user, isError, message, navigate, dispatch]);
 
-  if(isLoading){
-    return <Spinner />
+  if (isLoading) {
+    return <Spinner />;
   }
   return (
     <div className="login">
@@ -65,7 +65,12 @@ function Login() {
               color: "red",
               display: "flex",
               alignItems: "center",
-              gap: "4px",
+              gap: "10px",
+              backgroundColor: "grey",
+              padding: "8px",
+              justifyContent: "center",
+              borderRadius: "5px",
+              fontSize: "12px",
             }}
           >
             <FaWindowClose /> {err}

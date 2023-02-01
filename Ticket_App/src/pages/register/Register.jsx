@@ -100,10 +100,15 @@ function Register() {
                   color: "red",
                   display: "flex",
                   alignItems: "center",
-                  gap: "4px",
+                  gap: "10px",
+                  backgroundColor: 'grey',
+                  padding: '8px',
+                  justifyContent: 'center',
+                  borderRadius: '5px',
+                  fontSize:'12px'
                 }}
               >
-                <FaWindowClose /> {err}
+                <div><FaWindowClose /></div> <div>{err}</div>
               </span>
             ) : (
               ""
