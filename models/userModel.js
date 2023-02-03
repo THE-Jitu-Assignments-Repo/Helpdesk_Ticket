@@ -1,4 +1,4 @@
-const [isEmail]= require('validator')
+import isEmail from 'validator/lib/isEmail';
 const mongoose = require('mongoose')
 
 
