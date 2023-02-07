@@ -128,12 +128,12 @@ function SingleTicket() {
               </button>
             )}
 
-            {ticket.status !== "closed" && (
+            {/* {ticket.status !== "closed" && (
               <button className="btn-t">
                 <FaPenAlt />
                 <span className="del">Edit</span>{" "}
               </button>
-            )}
+            )} */}
             <button
               className="btn-t btn-del"
               onClick={() => {dispatch(DeleteTicket(ticket._id)), navigate('/tickets')}}
