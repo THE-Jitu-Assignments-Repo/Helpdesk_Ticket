@@ -146,7 +146,7 @@ function SingleTicket() {
       </div>
 
       <article className="footer">
-        <p>Click this button to download your ticket...</p>
+        <p>Click this button to print your ticket...</p>
         <button className="btn-download" onClick={handlePrint}>
           Print Ticket
         </button>
