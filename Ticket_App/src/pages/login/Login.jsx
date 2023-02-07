@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   FaHandPointLeft,
   FaHandPointRight,
+  FaRegEye,
   FaUser,
   FaUserAlt,
   FaUserLock,
@@ -21,6 +22,7 @@ function Login() {
   const { user, isError, isSuccess, isLoading, message } = useSelector(
     (state) => state.auth
   );
+  const [passwordShown, setPasswordShown] = useState(false);
   const [err, setErr] = useState("");
   const [logData, setLogData] = useState({ email: "", password: "" });
   const { email, password } = logData;
@@ -50,9 +52,14 @@ function Login() {
     dispatch(reset());
   }, [isSuccess, user, isError, message, navigate, dispatch]);
 
+  const handleVisibility=()=>{
+    setPasswordShown(!passwordShown);
+  }
+
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <div className="login">
       <FaUserLock size={50} />
@@ -86,13 +93,18 @@ function Login() {
           value={email}
           onChange={handleChange}
         />
+        <div className="toggle-password-visibility" id="toggle">
+
         <input
-          type="password"
+          type={passwordShown ? "text" : "password"}
           name="password"
           placeholder="Enter password"
           value={password}
           onChange={handleChange}
+          className="toggle-password-visibility__input"
         />
+        <FaRegEye className="toggle-password-visibility__toggle" onClick={handleVisibility} />
+        </div>
         <div className="form_button">
           <button className="btn">Sign in</button>
         </div>

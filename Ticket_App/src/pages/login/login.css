@@ -29,3 +29,49 @@
 .btn:hover {
   transform: scale(0.98);
 }
+
+#toggle input {
+  border: none;
+  outline: none;
+  margin-bottom: 0;
+}
+.toggle-password-visibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Border */
+  border: 1px solid #d1d5db;
+  /* padding: 0.25rem; */
+  width: 100%;
+  padding-right: 8px;
+  /* padding-top: 13px; */
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  color: #000;
+}
+
+.toggle-password-visibility__input {
+  border-color: transparent;
+
+  /* Take available width */
+  flex: 1;
+}
+
+.toggle-password-visibility__toggle {
+  /* Reset */
+  background: #fff;
+  border-color: transparent;
+
+  /* Center the content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+.toggle-password-visibility__toggle:hover{
+  opacity: 50%;
+}
