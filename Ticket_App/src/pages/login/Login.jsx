@@ -52,9 +52,10 @@ function Login() {
     dispatch(reset());
   }, [isSuccess, user, isError, message, navigate, dispatch]);
 
-  const handleVisibility=()=>{
+  const handleVisibility = () => {
     setPasswordShown(!passwordShown);
-  }
+
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -95,16 +96,18 @@ function Login() {
           autoFocus
         />
         <div className="toggle-password-visibility" id="toggle">
-
-        <input
-          type={passwordShown ? "text" : "password"}
-          name="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={handleChange}
-          className="toggle-password-visibility__input"
-        />
-        <FaRegEye className="toggle-password-visibility__toggle" onClick={handleVisibility} />
+          <input
+            type={passwordShown ? "text" : "password"}
+            name="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={handleChange}
+            className="toggle-password-visibility__input"
+          />
+          <FaRegEye
+            className="toggle-password-visibility__toggle"
+            onClick={handleVisibility}
+          />
         </div>
         <div className="form_button">
           <button className="btn">Sign in</button>
