@@ -1,7 +1,12 @@
 import React, { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FaHandPointRight, FaUser, FaWindowClose } from "react-icons/fa";
+import {
+  FaHandPointRight,
+  FaRegEye,
+  FaUser,
+  FaWindowClose,
+} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../components/spinner/Spinner";
@@ -15,6 +20,8 @@ function Register() {
   const { isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+  const [passwordShown, setPasswordShown] = useState(false);
+
   const [err, setErr] = useState("");
   const [regData, setRegData] = useState({
     username: "",
@@ -38,15 +45,15 @@ function Register() {
     ) {
       setErr("Passwords do not match!");
     }
-    dispatch(RegisterUser({ username, email, password }))
-      // .unwrap()
-      // .then(() => {
-      //   navigate("/login");
-      // })
-      // .catch((error) => {
-      //   setErr(error);
-        // navigate('/register')
-      // });
+    dispatch(RegisterUser({ username, email, password }));
+    // .unwrap()
+    // .then(() => {
+    //   navigate("/login");
+    // })
+    // .catch((error) => {
+    //   setErr(error);
+    // navigate('/register')
+    // });
   };
 
   // useEffect(()=>{
@@ -84,6 +91,10 @@ function Register() {
   //   dispatch(reset())
   // }
 
+  const handleVisibility = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -101,14 +112,17 @@ function Register() {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  backgroundColor: 'grey',
-                  padding: '8px',
-                  justifyContent: 'center',
-                  borderRadius: '5px',
-                  fontSize:'12px'
+                  backgroundColor: "grey",
+                  padding: "8px",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  fontSize: "12px",
                 }}
               >
-                <div><FaWindowClose /></div> <div>{err}</div>
+                <div>
+                  <FaWindowClose />
+                </div>{" "}
+                <div>{err}</div>
               </span>
             ) : (
               ""
@@ -127,20 +141,32 @@ function Register() {
               value={email}
               onChange={handleChange}
             />
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={handleChange}
-            />
-            <input
-              type="password"
-              name="confirmed_password"
-              placeholder="Confirm password"
-              value={confirmed_password}
-              onChange={handleChange}
-            />
+            <div className="toggle-password-visibility" id="toggle">
+              <input
+                type={passwordShown ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={handleChange}
+              />
+              <FaRegEye
+                className="toggle-password-visibility__toggle"
+                onClick={handleVisibility}
+              />
+            </div>
+            <div className="toggle-password-visibility" id="toggle">
+              <input
+                type={passwordShown ? "text" : "password"}
+                name="confirmed_password"
+                placeholder="Confirm password"
+                value={confirmed_password}
+                onChange={handleChange}
+              />
+              <FaRegEye
+                className="toggle-password-visibility__toggle"
+                onClick={handleVisibility}
+              />
+            </div>
 
             <div className="form_button">
               <button className="btn">Register</button>
