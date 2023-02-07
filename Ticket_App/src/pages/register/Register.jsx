@@ -133,6 +133,7 @@ function Register() {
               placeholder="eg. johnDoe"
               value={username}
               onChange={handleChange}
+              autoFocus
             />
             <input
               type="email"

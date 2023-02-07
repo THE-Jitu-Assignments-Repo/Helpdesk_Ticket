@@ -92,6 +92,7 @@ function Login() {
           placeholder="...@gmail.com"
           value={email}
           onChange={handleChange}
+          autoFocus
         />
         <div className="toggle-password-visibility" id="toggle">
 
