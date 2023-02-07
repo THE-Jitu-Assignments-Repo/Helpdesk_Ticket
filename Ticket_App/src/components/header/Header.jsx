@@ -6,6 +6,7 @@ import { logoutUser } from "../../features/Auth/authActions";
 import { reset } from "../../features/Auth/authSlice";
 import "./header.css";
 import decode from 'jwt-decode'
+import Avatar from "../avatar/Avatar";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
@@ -38,6 +39,7 @@ useEffect(() => {
         </Link>
       </div>
       <ul className="links">
+        {user && <Avatar email={user.email} />}
         {user ? (
           <li>
             <button className="btn" onClick={handleLogout}>
