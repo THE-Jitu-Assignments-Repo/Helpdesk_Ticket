@@ -12,11 +12,11 @@ function Home() {
       </section>
 
       <Link to="/newTicket" className="btn btn-reverse btn-block" id="new--ticket--home">
-        <FaQuestionCircle />
+        <FaQuestionCircle size={18}/>
         <h4>Create New Ticket</h4>
       </Link>
       <Link to="/tickets" className="btn btn-block">
-        <FaTicketAlt /> <h4>View my Tickets</h4>
+        <FaTicketAlt size={18}/> <h4>View my Tickets</h4>
       </Link>
     </div>
   );
