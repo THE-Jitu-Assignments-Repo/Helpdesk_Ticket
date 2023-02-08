@@ -35,6 +35,7 @@ function Login() {
     }));
     // dispatch(reset())
     setErr("");
+    setPasswordShown(false)
   };
 
   const submitLogin = (e) => {

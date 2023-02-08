@@ -35,6 +35,7 @@ function Register() {
     let { name, value } = e.target;
     setRegData((prev) => ({ ...prev, [name]: value }));
     setErr("");
+    setPasswordShown(false);
   };
 
   const registerUser = (e) => {
