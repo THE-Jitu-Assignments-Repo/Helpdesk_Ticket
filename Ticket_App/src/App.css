@@ -454,6 +454,10 @@ h3 {
   .header_tag img{
     padding-bottom: 4px;
   }
+  .links li{
+    /* border: 2px solid red; */
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 374px) {
