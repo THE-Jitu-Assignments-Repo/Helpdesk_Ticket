@@ -7,6 +7,8 @@ import Back from "../../components/backButton/Back";
 import TicketCard from "../../components/cards/TicketCard";
 import Spinner from "../../components/spinner/Spinner";
 import "./ticket.css";
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
 
 function Ticket() {
   const { tickets, isSucces, isLoading } = useSelector((state) => state.ticket);
@@ -16,13 +18,20 @@ function Ticket() {
     dispatch(getTickets());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  // if (isLoading) {
+  //   // return <Spinner />;
+  //   return (
+  //   <Box sx={{ width: 300 }}>
+  //     <Skeleton />
+  //     <Skeleton animation="wave" />
+  //     <Skeleton animation={false} />
+  //   </Box>
+  // );
+  // }
 
   return (
     <section className="all-T">
-      <Back url="/" className='back'/>
+      <Back url="/" className="back" />
       <h1 className="h-ticket">Tickets</h1>
       <div className="tickets">
         <div className="ticket-headings">
@@ -31,10 +40,20 @@ function Ticket() {
           <div>status</div>
         </div>
         <div className="ticket-display">
-
-        {tickets.map((ticket) => {
-          return <TicketCard key={ticket._id} item={ticket} />;
-        })}
+          {isLoading ? (
+            <Box>
+              <Skeleton height={60} />
+              <Skeleton animation="wave" height={60} />
+              <Skeleton animation={false} height={60} />
+              <Skeleton height={60} />
+              <Skeleton animation="wave" height={60} />
+              <Skeleton animation={false} height={60} />
+            </Box>
+          ) : (
+            tickets.map((ticket) => {
+              return <TicketCard key={ticket._id} item={ticket} />;
+            })
+          )}
         </div>
       </div>
     </section>
