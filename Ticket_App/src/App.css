@@ -462,6 +462,20 @@ h3 {
   #new--ticket--home h4{
     font-size: 12px;
   }
+  .ticket--date{
+    font-size: 12px;
+  }
+  .ticket--product--name{
+        font-size: 12px;
+
+  }
+  .status{
+        font-size: 12px;
+
+  }
+  #view{
+    padding: 8px;
+  }
 }
 
 @media screen and (max-width: 374px) {
