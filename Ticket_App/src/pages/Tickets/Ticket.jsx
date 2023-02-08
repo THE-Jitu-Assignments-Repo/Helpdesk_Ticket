@@ -53,7 +53,7 @@ function Ticket() {
             tickets.map((ticket) => {
               return <TicketCard key={ticket._id} item={ticket} />;
             })
-          )}
+          ) }
         </div>
       </div>
     </section>
