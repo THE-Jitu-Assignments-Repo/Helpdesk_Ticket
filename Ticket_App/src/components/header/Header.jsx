@@ -42,7 +42,7 @@ useEffect(() => {
         {user && <Avatar email={user.email} />}
         {user ? (
           <li>
-            <button className="btn" onClick={handleLogout}>
+            <button className="btn" onClick={handleLogout} id="logout--btn">
               <FaSignOutAlt />
               logout
             </button>

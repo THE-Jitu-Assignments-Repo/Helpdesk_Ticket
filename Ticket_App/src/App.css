@@ -414,6 +414,9 @@ h3 {
     /* width: 6; */
     margin-bottom: 20px;
   }
+  #logout--btn{
+    padding: 6px;
+  }
   .back {
     justify-content: flex-start;
   }
@@ -446,10 +449,10 @@ h3 {
   }
   .header_tag h1{
     padding-top: 3px;
-    font-size: 24px;
+    font-size: 18px;
   }
   .header_tag img{
-    padding-top: 2px;
+    padding-bottom: 4px;
   }
 }
 
