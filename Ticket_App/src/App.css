@@ -423,6 +423,7 @@ h3 {
   .ticket,
   .ticket-headings {
     display: flex;
+    font-size: 12px;
 
     /* flex-direction: column; */
   }
@@ -475,6 +476,7 @@ h3 {
   }
   #view{
     padding: 8px;
+    display: none;
   }
 }
 
