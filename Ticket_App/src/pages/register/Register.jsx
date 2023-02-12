@@ -27,9 +27,9 @@ function Register() {
     username: "",
     email: "",
     password: "",
-    confirmed_password: "",
+    // confirmed_password: "",
   });
-  const { username, email, password, confirmed_password } = regData;
+  const { username, email, password} = regData;
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -40,12 +40,12 @@ function Register() {
 
   const registerUser = (e) => {
     e.preventDefault();
-    if (
-      password !== confirmed_password ||
-      (password && confirmed_password == "")
-    ) {
-      setErr("Passwords do not match!");
-    }
+    // if (
+    //   password !== confirmed_password ||
+    //   (password && confirmed_password == "")
+    // ) {
+    //   setErr("Passwords do not match!");
+    // }
     dispatch(RegisterUser({ username, email, password }));
     // .unwrap()
     // .then(() => {
@@ -156,7 +156,7 @@ function Register() {
                 onClick={handleVisibility}
               />
             </div>
-            <div className="toggle-password-visibility" id="toggle">
+            {/* <div className="toggle-password-visibility" id="toggle">
               <input
                 type={passwordShown ? "text" : "password"}
                 name="confirmed_password"
@@ -168,7 +168,7 @@ function Register() {
                 className="toggle-password-visibility__toggle"
                 onClick={handleVisibility}
               />
-            </div>
+            </div> */}
 
             <div className="form_button">
               <button className="btn">Register</button>
