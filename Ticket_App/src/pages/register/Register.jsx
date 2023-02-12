@@ -128,6 +128,7 @@ function Register() {
             ) : (
               ""
             )}
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
@@ -136,6 +137,7 @@ function Register() {
               onChange={handleChange}
               autoFocus
             />
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -143,6 +145,7 @@ function Register() {
               value={email}
               onChange={handleChange}
             />
+              <label htmlFor="password">Password</label>
             <div className="toggle-password-visibility" id="toggle">
               <input
                 type={passwordShown ? "text" : "password"}
@@ -156,6 +159,7 @@ function Register() {
                 onClick={handleVisibility}
               />
             </div>
+              <span className="reg_pass">8 or more characters with a special charater</span>
             {/* <div className="toggle-password-visibility" id="toggle">
               <input
                 type={passwordShown ? "text" : "password"}
@@ -173,10 +177,12 @@ function Register() {
             <div className="form_button">
               <button className="btn">Register</button>
             </div>
-            <span className="reg_link">
-              <Link to="/login">
-                <FaHandPointRight className="handme" />
-                Already have an Account!
+            <span className="reg_link2">
+              Already have an Account?
+              <Link className="reg_link" to="/login">
+                 {' '}
+                {/* <FaHandPointRight className="handme" /> */}
+                Login
               </Link>
             </span>
           </form>

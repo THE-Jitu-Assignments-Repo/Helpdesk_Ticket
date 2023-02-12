@@ -87,7 +87,7 @@ function Login() {
         ) : (
           ""
         )}
-
+    <label htmlFor="email">User Email</label>
         <input
           type="email"
           name="email"
@@ -96,6 +96,7 @@ function Login() {
           onChange={handleChange}
           autoFocus
         />
+        <label htmlFor="password">Password</label>
         <div className="toggle-password-visibility" id="toggle">
           <input
             type={passwordShown ? "text" : "password"}
@@ -113,10 +114,11 @@ function Login() {
         <div className="form_button">
           <button className="btn">Sign in</button>
         </div>
-        <span className="reg_link">
-          <Link to="/register">
-            <FaHandPointRight className="handme" />
-            Don't have an Account!
+        <span className="reg_link2">
+           Don't have an Account?
+          <Link className="reg_link" to="/register">
+            {/* <FaHandPointRight className="handme" /> */}
+           Register
           </Link>
         </span>
       </form>
