@@ -9,6 +9,7 @@ export  const customStyles ={
         transform: 'translate(-50%, -50%)',
         position: 'relative'
     },
+    
 }
 
 export default customStyles

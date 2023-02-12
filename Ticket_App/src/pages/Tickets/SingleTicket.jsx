@@ -208,6 +208,7 @@ function SingleTicket() {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Add Note"
+        id="note--modal"
       >
         <div className="note-head">
           <h2>Add Note</h2>
