@@ -110,7 +110,7 @@ h3 {
 .btn:hover {
   transform: scale(0.98);
 }
-.reg_link2{
+.reg_link2 {
   display: flex;
 }
 .reg_link {
@@ -368,14 +368,14 @@ h3 {
   margin: 0 0 5px 3px;
 } */
 
-#toggle{
-    margin-bottom: 0;
-  }
+#toggle {
+  margin-bottom: 0;
+}
 
-  .reg_pass{
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
+.reg_pass {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 
 @media screen and (min-width: 280px) and (max-width: 820px) {
   .login {
@@ -428,7 +428,7 @@ h3 {
     /* width: 6; */
     margin-bottom: 20px;
   }
-  #logout--btn{
+  #logout--btn {
     padding: 6px;
   }
   .back {
@@ -450,59 +450,56 @@ h3 {
     display: grid;
     padding: 30px;
   }
-  #note--modal{
+  #note--modal {
     width: 300px;
   }
 
   .note-date {
     position: relative;
   }
-  .header{
+  .header {
     /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .header_tag{
+  .header_tag {
     padding-top: 8px;
   }
-  .header_tag h1{
+  .header_tag h1 {
     padding-top: 4px;
     font-size: 18px;
   }
-  .header_tag img{
+  .header_tag img {
     padding-bottom: 4px;
   }
-  .links li{
+  .links li {
     /* border: 2px solid red; */
     font-size: 12px;
     padding-top: 3px;
   }
-  #new--ticket--home h4{
+  #new--ticket--home h4 {
     font-size: 12px;
   }
-  .ticket--date{
+  .ticket--date {
     font-size: 12px;
   }
-  .ticket--product--name{
-        font-size: 12px;
-
+  .ticket--product--name {
+    font-size: 12px;
   }
-  .status{
-        font-size: 12px;
-
+  .status {
+    font-size: 16px;
   }
-  #view{
+  #view {
     padding: 8px;
     display: none;
   }
-  .reg_link2{
+  .reg_link2 {
     font-size: 14px;
   }
-  .reg_pass{
+  .reg_pass {
     font-size: 10px;
   }
-  
 }
 
 @media screen and (max-width: 374px) {
@@ -586,5 +583,18 @@ h3 {
   }
   .ticket-desc {
     word-wrap: break-word;
+  }
+  .status {
+    font-size: 16px;
+  }
+  #view {
+    padding: 8px;
+    display: none;
+  }
+  .reg_link2 {
+    font-size: 14px;
+  }
+  .reg_pass {
+    font-size: 10px;
   }
 }
