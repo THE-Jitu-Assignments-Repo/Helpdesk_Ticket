@@ -9,6 +9,18 @@ import Spinner from "../../components/spinner/Spinner";
 import "./ticket.css";
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
+import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
+import { Link as Move } from "react-router-dom";
+
+function handleClick(event) {
+  event.preventDefault();
+  console.info("You clicked a breadcrumb.");
+}
 
 function Ticket() {
   const { tickets, isSucces, isLoading } = useSelector((state) => state.ticket);
@@ -31,7 +43,28 @@ function Ticket() {
 
   return (
     <section className="all-T">
-      <Back url="/" className="back" />
+      <div role="presentation" onClick={handleClick} className='breadcrumb--tickets'>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/"
+          >
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            <Move to="/">Home</Move>
+          </Link>
+
+          <Typography
+            sx={{ display: "flex", alignItems: "center" }}
+            color="text.primary"
+          >
+            <ConfirmationNumberIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            Tickets
+          </Typography>
+        </Breadcrumbs>
+      </div>
+      {/* <Back url="/" className="back" /> */}
       <h1 className="h-ticket">Tickets</h1>
       <div className="tickets">
         <div className="ticket-headings">
@@ -53,7 +86,7 @@ function Ticket() {
             tickets.map((ticket) => {
               return <TicketCard key={ticket._id} item={ticket} />;
             })
-          ) }
+          )}
         </div>
       </div>
     </section>

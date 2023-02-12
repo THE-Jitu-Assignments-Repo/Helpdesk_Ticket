@@ -191,7 +191,11 @@ box-shadow:
   content: 'delete';
 }
 
-
-
+.main--ticket--div{
+  padding-left: 20px;
+}
+.breadcrumb--tickets{
+    padding-left: 20px;
+}
 
 

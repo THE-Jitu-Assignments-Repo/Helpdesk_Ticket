@@ -11,7 +11,7 @@ import {
 } from "../../features/Tickets/ticketActions";
 import Spinner from "../../components/spinner/Spinner";
 import Back from "../../components/backButton/Back";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as Move } from "react-router-dom";
 import { createNote, getNotes } from "../../features/note/noteActions";
 import NoteCard from "../../components/cards/noteCard";
 import Modal from "react-modal";
@@ -23,19 +23,19 @@ import {
   FaTrashAlt,
   FaWindowClose,
 } from "react-icons/fa";
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
-import HomeIcon from '@mui/icons-material/Home';
+import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
 // import WhatshotIcon from '@mui/icons-material/Whatshot';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 // import BookOnlineIcon from '@mui/icons-material/BookOnline';
-import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
+import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 // import GrainIcon from '@mui/icons-material/Grain';
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+  console.info("You clicked a breadcrumb.");
 }
 
 Modal.setAppElement("#root");
@@ -96,46 +96,45 @@ function SingleTicket() {
   };
   return (
     <>
-    <div className="main--ticket--div">
-       <div role="presentation" onClick={handleClick}>
-      <Breadcrumbs aria-label="breadcrumb">
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-          href="/"
-        >
-          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Home
-        </Link>
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-          href="/"
-        >
-          <ConfirmationNumberIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Tickets
-        </Link>
-        <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="text.primary"
-        >
-          <ConfirmationNumberOutlinedIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Ticket
-        </Typography>
-      </Breadcrumbs>
-    </div>
-      <section className="ticket--activity">
-
-      </section>
-      <section className="ticket--details">
-
-      </section>
-    </div>
+      <div className="main--ticket--div">
+        <div role="presentation" onClick={handleClick}>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/"
+            >
+              <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              <Move to="/">Home</Move>
+            </Link>
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/"
+            >
+              <ConfirmationNumberIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              <Move to="/tickets">Tickets</Move>
+            </Link>
+            <Typography
+              sx={{ display: "flex", alignItems: "center" }}
+              color="text.primary"
+            >
+              <ConfirmationNumberOutlinedIcon
+                sx={{ mr: 0.5 }}
+                fontSize="inherit"
+              />
+              Ticket
+            </Typography>
+          </Breadcrumbs>
+        </div>
+        <section className="ticket--activity"></section>
+        <section className="ticket--details"></section>
+      </div>
       <div className="ticket--new" ref={printRef}>
         <div className="ticket--header">
-          <Back url="/tickets" className="back" />
+          {/* <Back url="/tickets" className="back" /> */}
           <h2>
             Product:{" "}
             <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
@@ -187,7 +186,9 @@ function SingleTicket() {
             )} */}
             <button
               className="btn-t btn-del"
-              onClick={() => {dispatch(DeleteTicket(ticket._id)), navigate('/tickets')}}
+              onClick={() => {
+                dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
+              }}
             >
               <FaTrashAlt />
               <span className="del">Delete</span>
