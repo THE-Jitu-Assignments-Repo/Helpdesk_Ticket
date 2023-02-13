@@ -241,14 +241,14 @@ function SingleTicket() {
           <div className="form-group">
             <textarea
               name="noteText"
-              placeholder="Note text"
+              placeholder="Write a note text to the staff..."
               className="form-control"
               value={noteText}
               onChange={(e) => setNoteText(e.target.value)}
             ></textarea>
           </div>
           <div className="form-group">
-            <button className="btn" type="submit">
+            <button className="btn" type="submit" style={{marginLeft: '20px'}}>
               Submit
             </button>
           </div>
