@@ -8,15 +8,15 @@ module.exports = {
         // Create query object with ticket, note, and user references
         let query = {
             $lookup: {
-                from: Ticket,
-                localField: Ticket._id,
-                foreignField: User._id,
+                from: 'tickets',
+                localField: '_id',
+                foreignField: 'user',
                 as: 'tickets'
             },
             $lookup: {
-                from: Note,
-                localField: Note._id,
-                foreignField: User._id,
+                from: 'notes',
+                localField:'_id',
+                foreignField: 'user',
                 as: 'notes'
             }
         };
@@ -28,7 +28,7 @@ module.exports = {
                     message: err
                 })
             }
-            res.statue(200).json({
+            res.status(200).json({
                 data: users
             })
         })
