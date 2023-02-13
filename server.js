@@ -3,6 +3,7 @@ const colors = require('colors')
 const dotenv = require('dotenv')
 const userRoutes = require('./routes/user/userRouters')
 const ticketRoutes = require('./routes/ticket/ticketRoutes')
+const adminRoutes = require('./routes/admin/adminRoutes')
 const path = require('path')
 const serverless = require('serverless-http')
 const cors = require('cors')
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended: false})) //to accept url encoded form
 
 app.use('/api/users', userRoutes)
 app.use('/api/tickets', ticketRoutes)
+app.use('/api/admin', adminRoutes)
 
 
 app.use('/.netlify/functions/api/users', userRoutes)
