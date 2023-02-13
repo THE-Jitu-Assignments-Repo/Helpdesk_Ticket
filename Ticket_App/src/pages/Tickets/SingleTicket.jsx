@@ -33,6 +33,8 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 // import GrainIcon from '@mui/icons-material/Grain';
 
+import { Document, Page } from "react-pdf";
+
 function handleClick(event) {
   event.preventDefault();
   console.info("You clicked a breadcrumb.");
@@ -52,8 +54,20 @@ function SingleTicket() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handlePrint = () => {
-    window.print(printRef.current);
+  // window.print(printRef.current);
+  const printSection = (e) => {
+    e.preventDefault();
+    let mywindow = window.open("", "PRINT", "height=400,width=600");
+
+    mywindow.document.write(document.getElementById("divid").innerHTML);
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
   };
 
   const { ticketID } = useParams();
@@ -94,6 +108,9 @@ function SingleTicket() {
     dispatch(createNote({ noteText, ticketID }));
     closeModal();
   };
+  const print = () => {
+    window.print()
+  }
   return (
     <>
       <div className="main--ticket--div">
@@ -132,74 +149,78 @@ function SingleTicket() {
         <section className="ticket--activity"></section>
         <section className="ticket--details"></section>
       </div>
-      <div className="ticket--new" ref={printRef}>
-        <div className="ticket--header">
-          {/* <Back url="/tickets" className="back" /> */}
-          <h2>
-            Product:{" "}
-            <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
-          </h2>
-          <span className="status--new">
-            status:{" "}
-            <p className={`status status-${ticket.status}`}>{ticket.status}</p>
-          </span>
-        </div>
-        <section className="ticket--content">
-          <div className="ticket--body">
-            <span>
-              <h3>TIcket ID:</h3> {ticket._id}
-            </span>
-            <span>
-              <h3>Date Submitted: </h3>
-              {new Date(ticket.createdAt).toLocaleString("en-US")}
-            </span>
-          </div>
-          <div className="ticket-desc">
-            <h3>Description of the issue</h3>
-            <p>{ticket.description}</p>
-          </div>
-          <section>
-            {ticket.status !== "close" && (
-              <button className="btn new-btn" onClick={openModal}>
-                {" "}
-                <FaPlus />
-                Add Note
-              </button>
-            )}
 
-            {notes.map((note) => {
-              return <NoteCard key={note._id} note={note} />;
-            })}
-          </section>
-          <div className="button-fix">
-            {ticket.status !== "closed" && (
-              <button className="btn-t btn-danger" onClick={handleClose}>
-                Close Ticket
-              </button>
-            )}
+     
+          <div className="ticket--new" ref={printRef} id="divid">
+            <div className="ticket--header">
+              {/* <Back url="/tickets" className="back" /> */}
+              <h2>
+                Product:{" "}
+                <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
+              </h2>
+              <span className="status--new">
+                status:{" "}
+                <p className={`status status-${ticket.status}`}>
+                  {ticket.status}
+                </p>
+              </span>
+            </div>
+            <section className="ticket--content">
+              <div className="ticket--body">
+                <span>
+                  <h3>TIcket ID:</h3> {ticket._id}
+                </span>
+                <span>
+                  <h3>Date Submitted: </h3>
+                  {new Date(ticket.createdAt).toLocaleString("en-US")}
+                </span>
+              </div>
+              <div className="ticket-desc">
+                <h3>Description of the issue</h3>
+                <p>{ticket.description}</p>
+              </div>
+              <section>
+                {ticket.status !== "close" && (
+                  <button className="btn new-btn" onClick={openModal}>
+                    {" "}
+                    <FaPlus />
+                    Add Note
+                  </button>
+                )}
 
-            {/* {ticket.status !== "closed" && (
+                {notes.map((note) => {
+                  return <NoteCard key={note._id} note={note} />;
+                })}
+              </section>
+              <div className="button-fix">
+                {ticket.status !== "closed" && (
+                  <button className="btn-t btn-danger" onClick={handleClose}>
+                    Close Ticket
+                  </button>
+                )}
+
+                {/* {ticket.status !== "closed" && (
               <button className="btn-t">
                 <FaPenAlt />
                 <span className="del">Edit</span>{" "}
               </button>
             )} */}
-            <button
-              className="btn-t btn-del"
-              onClick={() => {
-                dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
-              }}
-            >
-              <FaTrashAlt />
-              <span className="del">Delete</span>
-            </button>
+                <button
+                  className="btn-t btn-del"
+                  onClick={() => {
+                    dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
+                  }}
+                >
+                  <FaTrashAlt />
+                  <span className="del">Delete</span>
+                </button>
+              </div>
+            </section>
           </div>
-        </section>
-      </div>
 
       <article className="footer">
         <p>Click this button to print your ticket...</p>
-        <button className="btn-download" onClick={handlePrint}>
+        <button className="btn-download" onClick={printSection}>
           Print Ticket
         </button>
       </article>
