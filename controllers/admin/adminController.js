@@ -4,7 +4,7 @@ const Ticket = require('../../models/ticketModel/ticketModel')
 
 
 module.exports = {
-    getAdminInfo: async (req, res) => {
+    getUserTickets: async (req, res) => {
         // Create query object with ticket, note, and user references
         let query = {
             $lookup: {

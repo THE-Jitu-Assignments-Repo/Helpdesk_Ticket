@@ -1,9 +1,9 @@
-const { getAdminInfo, getUsers } = require('../../controllers/admin/adminController')
+const { getUsers, getUserTickets } = require('../../controllers/admin/adminController')
 
 const router = require('express').Router()
 
 
-router.get('/', getAdminInfo)
+router.get('/', getUserTickets)
 router.get('/users', getUsers)
 
 module.exports=router
