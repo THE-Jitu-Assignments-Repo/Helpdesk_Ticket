@@ -13,12 +13,12 @@ module.exports = {
                 foreignField: 'user',
                 as: 'tickets'
             },
-            $lookup: {
-                from: 'notes',
-                localField:'_id',
-                foreignField: 'user',
-                as: 'notes'
-            }
+            // $lookup: {
+            //     from: 'notes',
+            //     localField:'_id',
+            //     foreignField: 'user',
+            //     as: 'notes'
+            // }
         };
 
         User.aggregate([query]).exec((err, users) => {
