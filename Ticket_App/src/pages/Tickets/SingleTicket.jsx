@@ -114,7 +114,7 @@ function SingleTicket() {
   const handleNote = (e) => {
     e.preventDefault();
     if (!noteText){
-      setErr("Invalid text field")
+      setErr("Invalid text message")
       openModal()
     }else{
       dispatch(createNote({ noteText, ticketID }));
@@ -279,7 +279,7 @@ function SingleTicket() {
             <FaWindowClose size={25} />
           </button>
         </div>
-        {err? <Alert severity="error">{err}!</Alert>: ""}
+        {err? <Alert severity="error" style={{marginBottom: '10px'}}>{err}!</Alert>: ""}
         <form onSubmit={handleNote}>
           <div className="form-group">
             <textarea
