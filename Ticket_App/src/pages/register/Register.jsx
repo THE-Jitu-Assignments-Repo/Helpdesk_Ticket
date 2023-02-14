@@ -109,7 +109,7 @@ function Register() {
 
           <form className="form" onSubmit={registerUser}>
             {err ? (
-              <Alert severity="error">{err}!</Alert>
+              <Alert severity="error">{err}</Alert>
             ) : (
               ""
             )}
