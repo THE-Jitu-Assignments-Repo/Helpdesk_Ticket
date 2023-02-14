@@ -8,6 +8,7 @@ import Register from "../pages/register/Register";
 import Home from "../pages/home/Home";
 import NewTicket from "../pages/Tickets/NewTicket";
 import Spinner from "../components/spinner/Spinner";
+import ErrorPage from "./error-page";
 
 const Ticket = lazy(() => import("../pages/Tickets/Ticket"));
 const SingleTicket = lazy(() => import("../pages/Tickets/SingleTicket"));
@@ -16,7 +17,7 @@ function Routers() {
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
-        <Route path="/" element={<Index />}>
+        <Route path="/" element={<Index />} errorElement={<ErrorPage />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
