@@ -32,8 +32,9 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 // import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 // import GrainIcon from '@mui/icons-material/Grain';
-
-import { Document, Page } from "react-pdf";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import Button from "@mui/material/Button";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function handleClick(event) {
   event.preventDefault();
@@ -109,8 +110,8 @@ function SingleTicket() {
     closeModal();
   };
   const print = () => {
-    window.print()
-  }
+    window.print();
+  };
   return (
     <>
       <div className="main--ticket--div">
@@ -150,73 +151,74 @@ function SingleTicket() {
         <section className="ticket--details"></section>
       </div>
 
-     
-          <div className="ticket--new" ref={printRef} id="divid">
-            <div className="ticket--header">
-              {/* <Back url="/tickets" className="back" /> */}
-              <h2>
-                Product:{" "}
-                <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
-              </h2>
-              <span className="status--new">
-                status:{" "}
-                <p className={`status status-${ticket.status}`}>
-                  {ticket.status}
-                </p>
-              </span>
-            </div>
-            <section className="ticket--content">
-              <div className="ticket--body">
-                <span>
-                  <h3>TIcket ID:</h3> {ticket._id}
-                </span>
-                <span>
-                  <h3>Date Submitted: </h3>
-                  {new Date(ticket.createdAt).toLocaleString("en-US")}
-                </span>
-              </div>
-              <div className="ticket-desc">
-                <h3>Description of the issue</h3>
-                <p>{ticket.description}</p>
-              </div>
-              <section>
-                {ticket.status !== "close" && (
-                  <button className="btn new-btn" onClick={openModal}>
-                    {" "}
-                    <FaPlus />
-                    Add Note
-                  </button>
-                )}
+      <div className="ticket--new" ref={printRef} id="divid">
+        <div className="ticket--header">
+          {/* <Back url="/tickets" className="back" /> */}
+          <h2>
+            Product:{" "}
+            <span style={{ fontWeight: "lighter" }}>{ticket.product}</span>
+          </h2>
+          <span className="status--new">
+            status:{" "}
+            <p className={`status status-${ticket.status}`}>{ticket.status}</p>
+          </span>
+        </div>
+        <section className="ticket--content">
+          <div className="ticket--body">
+            <span>
+              <h3>TIcket ID:</h3> {ticket._id}
+            </span>
+            <span>
+              <h3>Date Submitted: </h3>
+              {new Date(ticket.createdAt).toLocaleString("en-US")}
+            </span>
+          </div>
+          <div className="ticket-desc">
+            <h3>Description of the issue</h3>
+            <p>{ticket.description}</p>
+          </div>
+          <section>
+            {ticket.status !== "close" && (
+              <button className="btn new-btn" onClick={openModal}>
+                {" "}
+                <FaPlus />
+                Add Note
+              </button>
+            )}
 
-                {notes.map((note) => {
-                  return <NoteCard key={note._id} note={note} />;
-                })}
-              </section>
-              <div className="button-fix">
-                {ticket.status !== "closed" && (
-                  <button className="btn-t btn-danger" onClick={handleClose}>
-                    Close Ticket
-                  </button>
-                )}
+            {notes.map((note) => {
+              return <NoteCard key={note._id} note={note} />;
+            })}
+          </section>
+          <div className="button-fix">
+            {ticket.status !== "closed" && (
+              <Button variant="contained" color="warning" size="small" onClick={handleClose}>
+                <CloseOutlinedIcon />
+                Close
+              </Button>
+            )}
 
-                {/* {ticket.status !== "closed" && (
+            {/* {ticket.status !== "closed" && (
               <button className="btn-t">
                 <FaPenAlt />
                 <span className="del">Edit</span>{" "}
               </button>
             )} */}
-                <button
-                  className="btn-t btn-del"
-                  onClick={() => {
-                    dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
-                  }}
-                >
-                  <FaTrashAlt />
-                  <span className="del">Delete</span>
-                </button>
-              </div>
-            </section>
+            <Button
+              // className="btn-t btn-del"
+              variant="contained"
+              color="error" size="small"
+              onClick={() => {
+                dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
+              }}
+              startIcon={<DeleteForeverIcon />}
+            >
+              
+              Delete
+            </Button>
           </div>
+        </section>
+      </div>
 
       <article className="footer">
         <p>Click this button to print your ticket...</p>
@@ -248,7 +250,7 @@ function SingleTicket() {
             ></textarea>
           </div>
           <div className="form-group">
-            <button className="btn" type="submit" style={{margin: '0 auto'}}>
+            <button className="btn" type="submit" style={{ margin: "0 auto" }}>
               Submit
             </button>
           </div>

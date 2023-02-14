@@ -603,8 +603,8 @@ h3 {
     position: relative;
   }
   .button-fix {
-    display: grid;
-    row-gap: 5px;
+    display: flex;
+    /* row-gap: 5px; */
   }
   .ticket--body span {
     word-wrap: break-word;
