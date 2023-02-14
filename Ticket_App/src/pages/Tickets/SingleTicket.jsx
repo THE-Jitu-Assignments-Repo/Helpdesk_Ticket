@@ -34,7 +34,10 @@ import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumb
 // import GrainIcon from '@mui/icons-material/Grain';
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import Button from "@mui/material/Button";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Chip from "@mui/material/Chip";
+import TagFacesSharpIcon from "@mui/icons-material/TagFacesSharp";
+import SentimentDissatisfiedSharpIcon from "@mui/icons-material/SentimentDissatisfiedSharp";
 
 function handleClick(event) {
   event.preventDefault();
@@ -160,7 +163,19 @@ function SingleTicket() {
           </h2>
           <span className="status--new">
             status:{" "}
-            <p className={`status status-${ticket.status}`}>{ticket.status}</p>
+            <Chip
+              label={`${ticket.status}`}
+              color={ticket.status === "new" ? "success" : "error"}
+              size="small"
+              icon={
+                ticket.status === "new" ? (
+                  <TagFacesSharpIcon />
+                ) : (
+                  <SentimentDissatisfiedSharpIcon />
+                )
+              }
+            />
+            {/* <p className={`status status-${ticket.status}`}>{ticket.status}</p> */}
           </span>
         </div>
         <section className="ticket--content">
@@ -192,7 +207,12 @@ function SingleTicket() {
           </section>
           <div className="button-fix">
             {ticket.status !== "closed" && (
-              <Button variant="contained" color="warning" size="small" onClick={handleClose}>
+              <Button
+                variant="contained"
+                color="inherit"
+                size="small"
+                onClick={handleClose}
+              >
                 <CloseOutlinedIcon />
                 Close
               </Button>
@@ -207,13 +227,13 @@ function SingleTicket() {
             <Button
               // className="btn-t btn-del"
               variant="contained"
-              color="error" size="small"
+              color="error"
+              size="small"
               onClick={() => {
                 dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
               }}
               startIcon={<DeleteForeverIcon />}
             >
-              
               Delete
             </Button>
           </div>
