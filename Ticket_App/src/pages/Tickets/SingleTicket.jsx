@@ -287,6 +287,7 @@ function SingleTicket() {
               placeholder="Write a note text to the staff..."
               className="form-control"
               value={noteText}
+              autoFocus
               onChange={(e) => {setNoteText(e.target.value), setErr('')}}
             ></textarea>
           </div>

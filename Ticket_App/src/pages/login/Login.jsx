@@ -15,6 +15,8 @@ import Spinner from "../../components/spinner/Spinner";
 import { loginUser } from "../../features/Auth/authActions";
 import { reset } from "../../features/Auth/authSlice";
 import "./login.css";
+import Alert from '@mui/material/Alert';
+
 
 function Login() {
   const dispatch = useDispatch();
@@ -69,21 +71,7 @@ function Login() {
 
       <form className="form" onSubmit={submitLogin}>
         {err ? (
-          <span
-            style={{
-              color: "red",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              backgroundColor: "grey",
-              padding: "8px",
-              justifyContent: "center",
-              borderRadius: "5px",
-              fontSize: "12px",
-            }}
-          >
-            <FaWindowClose /> {err}
-          </span>
+            <Alert severity="error">{err}!</Alert> 
         ) : (
           ""
         )}

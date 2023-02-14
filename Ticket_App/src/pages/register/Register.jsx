@@ -13,6 +13,8 @@ import Spinner from "../../components/spinner/Spinner";
 import { RegisterUser } from "../../features/Auth/authActions";
 import { reset } from "../../features/Auth/authSlice";
 import "./register.css";
+import Alert from '@mui/material/Alert';
+
 
 function Register() {
   const dispatch = useDispatch();
@@ -107,24 +109,7 @@ function Register() {
 
           <form className="form" onSubmit={registerUser}>
             {err ? (
-              <span
-                style={{
-                  color: "red",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  backgroundColor: "grey",
-                  padding: "8px",
-                  justifyContent: "center",
-                  borderRadius: "5px",
-                  fontSize: "12px",
-                }}
-              >
-                <div>
-                  <FaWindowClose />
-                </div>{" "}
-                <div>{err}</div>
-              </span>
+              <Alert severity="error">{err}!</Alert>
             ) : (
               ""
             )}
