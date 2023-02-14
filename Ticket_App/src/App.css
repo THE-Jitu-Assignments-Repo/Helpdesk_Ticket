@@ -321,8 +321,13 @@ h3 {
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
+  display: flex;
+  gap: 20px;
 }
-
+.note--header h4{
+  margin-bottom: 10px;
+  /* border: 2px solid red; */
+}
 .note-head {
   background: #f4f4f4;
   padding: 5px 20px;
@@ -334,13 +339,13 @@ h3 {
 
 .note-date {
   position: absolute;
-  top: 15px;
+  top: 25px;
   right: 10px;
   font-size: 14px;
 }
 
 .delete-note {
-  color: red;
+  color: rgb(203, 58, 58);
   cursor: pointer;
   position: absolute;
   bottom: 10px;
@@ -472,6 +477,9 @@ h3 {
 
   .note-date {
     position: relative;
+    top: 0;
+    padding-left: 14px;
+    margin-bottom: 10px;
   }
   .header {
     /* border: 2px solid red; */
