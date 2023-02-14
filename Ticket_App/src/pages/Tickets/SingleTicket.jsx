@@ -38,6 +38,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Chip from "@mui/material/Chip";
 import TagFacesSharpIcon from "@mui/icons-material/TagFacesSharp";
 import SentimentDissatisfiedSharpIcon from "@mui/icons-material/SentimentDissatisfiedSharp";
+import InsertCommentSharpIcon from '@mui/icons-material/InsertCommentSharp';
 
 function handleClick(event) {
   event.preventDefault();
@@ -201,9 +202,10 @@ function SingleTicket() {
                 size="small"
                 className="new-btn"
                 onClick={openModal}
+                startIcon={<InsertCommentSharpIcon />}
               >
                 {" "}
-                <FaPlus />
+                {/* <FaPlus /> */}
                 Add Note
               </Button>
             )}
