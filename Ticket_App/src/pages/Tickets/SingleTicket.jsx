@@ -39,6 +39,8 @@ import Chip from "@mui/material/Chip";
 import TagFacesSharpIcon from "@mui/icons-material/TagFacesSharp";
 import SentimentDissatisfiedSharpIcon from "@mui/icons-material/SentimentDissatisfiedSharp";
 import InsertCommentSharpIcon from '@mui/icons-material/InsertCommentSharp';
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import Alert from '@mui/material/Alert';
 
 function handleClick(event) {
   event.preventDefault();
@@ -110,8 +112,14 @@ function SingleTicket() {
 
   const handleNote = (e) => {
     e.preventDefault();
-    dispatch(createNote({ noteText, ticketID }));
+    if (!noteText){
+      setErr("Invalid text field")
+      openModal()
+    }else{
+      dispatch(createNote({ noteText, ticketID }));
     closeModal();
+    }
+    
   };
   const print = () => {
     window.print();
@@ -270,6 +278,7 @@ function SingleTicket() {
             <FaWindowClose size={25} />
           </button>
         </div>
+        {err? <Alert severity="error">{err}!</Alert>: ""}
         <form onSubmit={handleNote}>
           <div className="form-group">
             <textarea
@@ -277,13 +286,18 @@ function SingleTicket() {
               placeholder="Write a note text to the staff..."
               className="form-control"
               value={noteText}
-              onChange={(e) => setNoteText(e.target.value)}
+              onChange={(e) => {setNoteText(e.target.value), setErr('')}}
             ></textarea>
           </div>
           <div className="form-group">
-            <button className="btn" type="submit" style={{ margin: "0 auto" }}>
+            <Button variant="contained"
+              color="inherit"
+              size="small"
+              startIcon={<ForwardToInboxIcon />}
+              // className="btn" 
+              type="submit" >
               Submit
-            </button>
+            </Button>
           </div>
         </form>
       </Modal>
