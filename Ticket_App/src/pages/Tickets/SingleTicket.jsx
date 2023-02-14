@@ -105,6 +105,7 @@ function SingleTicket() {
   //open and close modal to add note
   const openModal = () => {
     setIsOpen(true);
+    setNoteText('')
   };
   const closeModal = () => {
     setIsOpen(false);
