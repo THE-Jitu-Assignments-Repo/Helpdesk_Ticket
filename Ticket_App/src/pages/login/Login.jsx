@@ -71,7 +71,7 @@ function Login() {
 
       <form className="form" onSubmit={submitLogin}>
         {err ? (
-            <Alert severity="error">{err}!</Alert> 
+            <Alert severity="error">{err}</Alert> 
         ) : (
           ""
         )}
