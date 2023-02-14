@@ -13,7 +13,7 @@ function NoteCard({ note }) {
           color: note.isStaff ? "#fff" : "#000",
         }}
       >
-          <Avatar email={note.isStaff? 'Staff' : user.email} />
+        <Avatar email={note.isStaff ? "Staff" : user.email} />
         <section>
           <div className="note--header">
             <h4>
@@ -21,7 +21,13 @@ function NoteCard({ note }) {
               {note.isStaff ? <span>Staff</span> : <span>{user.name} </span>}
             </h4>
             <div className="note-date">
-              {new Date(note.createdAt).toLocaleString("en-US")}
+              {new Date(note.createdAt).toLocaleString("en-US", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
             </div>
           </div>
           <p>{note.text}</p>
