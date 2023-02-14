@@ -81,7 +81,7 @@ function Ticket() {
               <Skeleton animation="wave" height={60} />
               <Skeleton animation={false} height={60} />
             </Box>
-          ) : (tickets.length === 0 ? <div className="no--ticket"><img src="public/no-ticket-2.png" alt="not found" width={400}/> <p>No Tickets Found</p></div>:
+          ) : (tickets.length === 0 ? <div className="no--ticket"><img src="/no-ticket-2.png" alt="not found" width={400}/> <p>No Tickets Found</p></div>:
             tickets.map((ticket) => {
               return <TicketCard key={ticket._id} item={ticket} />;
             })
