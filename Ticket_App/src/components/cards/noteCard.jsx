@@ -13,7 +13,7 @@ function NoteCard({ note }) {
           color: note.isStaff ? "#fff" : "#000",
         }}
       >
-          <Avatar email={note.isStaff? 'S' : user.email} />
+          <Avatar email={note.isStaff? 'Staff' : user.email} />
         <section>
           <div className="note--header">
             <h4>
