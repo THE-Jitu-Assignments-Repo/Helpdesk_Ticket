@@ -195,7 +195,8 @@ box-shadow:
   padding-left: 20px;
 }
 .breadcrumb--tickets{
-    padding-left: 10px;
+    padding-left: 12px;
+    /* border: 2px solid red; */
 }
 
 

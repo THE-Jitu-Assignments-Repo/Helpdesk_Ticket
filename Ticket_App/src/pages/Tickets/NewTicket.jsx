@@ -9,6 +9,12 @@ import Spinner from "../../components/spinner/Spinner";
 import { createTicket } from "../../features/Tickets/ticketActions";
 import { reset } from "../../features/Tickets/ticketSlice";
 import "./ticket.css";
+import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import { Link as Move } from "react-router-dom";
 
 function NewTicket() {
   const { user } = useSelector((state) => state.auth);
@@ -51,6 +57,27 @@ function NewTicket() {
   // }
   return (
     <>
+      <div role="presentation" className="breadcrumb--tickets">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/"
+          >
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            <Move to="/">Home</Move>
+          </Link>
+
+          <Typography
+            sx={{ display: "flex", alignItems: "center" }}
+            color="text.primary"
+          >
+            <ConfirmationNumberIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            New Ticket
+          </Typography>
+        </Breadcrumbs>
+      </div>
       <section className="heading-tag">
         <h1>Create New Ticket</h1>
         <p>Please fill out the form below</p>
@@ -107,9 +134,9 @@ function NewTicket() {
             <button className="btn btn-block-T">Submit</button>
           </form>
         </section>
-        <div className="back">
+        {/* <div className="back">
           <Back url={"/"} />
-        </div>
+        </div> */}
       </section>
     </>
   );
