@@ -8,7 +8,7 @@ function Avatar({email, co}) {
     return (
         <div>
             <Tooltip placement="bottom" overlay={email}>
-            <span>{' '}<Avvvatars value={email} shadow={true} style="character" borderColor={co} borderSize={2} border={true}/></span>
+            <span>{' '}<Avvvatars value={email} shadow={true} style="character" borderColor={co} borderSize={0.5} border={true}/></span>
             </Tooltip>
         </div>
     )
