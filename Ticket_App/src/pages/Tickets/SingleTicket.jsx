@@ -248,7 +248,7 @@ function SingleTicket() {
             ></textarea>
           </div>
           <div className="form-group">
-            <button className="btn" type="submit" style={{marginLeft: '20px'}}>
+            <button className="btn" type="submit" style={{margin: '0 auto'}}>
               Submit
             </button>
           </div>
