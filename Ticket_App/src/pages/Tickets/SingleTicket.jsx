@@ -193,13 +193,22 @@ function SingleTicket() {
             <p>{ticket.description}</p>
           </div>
           <section>
-            {ticket.status !== "close" && (
-              <button className="btn new-btn" onClick={openModal}>
+            <div style={{marginBottom: '20px'}}>
+              {ticket.status !== "close" && (
+              <Button
+                variant="contained"
+                color="inherit"
+                size="small"
+                className="new-btn"
+                onClick={openModal}
+              >
                 {" "}
                 <FaPlus />
                 Add Note
-              </button>
+              </Button>
             )}
+            </div>
+            
 
             {notes.map((note) => {
               return <NoteCard key={note._id} note={note} />;
