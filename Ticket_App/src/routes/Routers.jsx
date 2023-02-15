@@ -15,7 +15,7 @@ const SingleTicket = lazy(() => import("../pages/Tickets/SingleTicket"));
 
 function Routers() {
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Spinner />} >
       <Routes>
         <Route path="/" element={<Index />} errorElement={<ErrorPage />}>
           <Route index element={<Home />} />
