@@ -17,10 +17,11 @@ function Routers() {
   return (
     <Suspense fallback={<Spinner />} >
       <Routes>
-        <Route path="/" element={<Index />} errorElement={<ErrorPage />}>
+        <Route path="/" element={<Index />} >
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path='*' element={<ErrorPage />}/>
           <Route
             path="/newTicket"
             element={

@@ -398,10 +398,15 @@ h3 {
   align-items: center;
   margin: 0 auto;
   justify-content: center;
-  /* border: 2px solid red; */
   width: 200px;
 }
 
+#error-page img{
+  /* border: 2px solid red;  */
+  width: 30rem; 
+  object-fit: scale-down;
+  padding:10px;
+}
 /* .no--ticket img{
     object-fit: contain;
     width: 150px;
