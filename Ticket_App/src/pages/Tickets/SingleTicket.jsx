@@ -38,9 +38,9 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Chip from "@mui/material/Chip";
 import TagFacesSharpIcon from "@mui/icons-material/TagFacesSharp";
 import SentimentDissatisfiedSharpIcon from "@mui/icons-material/SentimentDissatisfiedSharp";
-import InsertCommentSharpIcon from '@mui/icons-material/InsertCommentSharp';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
-import Alert from '@mui/material/Alert';
+import InsertCommentSharpIcon from "@mui/icons-material/InsertCommentSharp";
+import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
+import Alert from "@mui/material/Alert";
 
 function handleClick(event) {
   event.preventDefault();
@@ -105,7 +105,7 @@ function SingleTicket() {
   //open and close modal to add note
   const openModal = () => {
     setIsOpen(true);
-    setNoteText('')
+    setNoteText("");
   };
   const closeModal = () => {
     setIsOpen(false);
@@ -113,22 +113,21 @@ function SingleTicket() {
 
   const handleNote = (e) => {
     e.preventDefault();
-    if (!noteText){
-      setErr("Invalid text message")
-      openModal()
-    }else{
+    if (!noteText) {
+      setErr("Invalid text message");
+      openModal();
+    } else {
       dispatch(createNote({ noteText, ticketID }));
-    closeModal();
+      closeModal();
     }
-    
   };
   const print = () => {
     window.print();
   };
   return (
     <>
-      <div className="main--ticket--div">
-        <div role="presentation" onClick={handleClick}>
+      <div className="main--ticket--div hidden-print">
+        <div role="presentation hidden-print" onClick={handleClick}>
           <Breadcrumbs aria-label="breadcrumb">
             <Link
               underline="hover"
@@ -203,23 +202,22 @@ function SingleTicket() {
             <p>{ticket.description}</p>
           </div>
           <section>
-            <div style={{marginBottom: '20px'}}>
+            <div style={{ marginBottom: "20px" }}>
               {ticket.status !== "close" && (
-              <Button
-                variant="contained"
-                color="inherit"
-                size="small"
-                className="new-btn hidden-print"
-                onClick={openModal}
-                startIcon={<InsertCommentSharpIcon />}
-              >
-                {" "}
-                {/* <FaPlus /> */}
-                Add Note
-              </Button>
-            )}
+                <Button
+                  variant="contained"
+                  color="inherit"
+                  size="small"
+                  className="new-btn hidden-print"
+                  onClick={openModal}
+                  startIcon={<InsertCommentSharpIcon />}
+                >
+                  {" "}
+                  {/* <FaPlus /> */}
+                  Add Note
+                </Button>
+              )}
             </div>
-            
 
             {notes.map((note) => {
               return <NoteCard key={note._id} note={note} />;
@@ -231,6 +229,7 @@ function SingleTicket() {
                 variant="contained"
                 color="inherit"
                 size="small"
+                className="hidden-print"
                 onClick={handleClose}
               >
                 <CloseOutlinedIcon />
@@ -249,6 +248,7 @@ function SingleTicket() {
               variant="contained"
               color="error"
               size="small"
+              className="hidden-print"
               onClick={() => {
                 dispatch(DeleteTicket(ticket._id)), navigate("/tickets");
               }}
@@ -279,7 +279,13 @@ function SingleTicket() {
             <FaWindowClose size={25} />
           </button>
         </div>
-        {err? <Alert severity="error" style={{marginBottom: '10px'}}>{err}!</Alert>: ""}
+        {err ? (
+          <Alert severity="error" style={{ marginBottom: "10px" }}>
+            {err}!
+          </Alert>
+        ) : (
+          ""
+        )}
         <form onSubmit={handleNote}>
           <div className="form-group">
             <textarea
@@ -288,16 +294,20 @@ function SingleTicket() {
               className="form-control"
               value={noteText}
               autoFocus
-              onChange={(e) => {setNoteText(e.target.value), setErr('')}}
+              onChange={(e) => {
+                setNoteText(e.target.value), setErr("");
+              }}
             ></textarea>
           </div>
           <div className="form-group">
-            <Button variant="contained"
+            <Button
+              variant="contained"
               color="inherit"
               size="small"
               startIcon={<ForwardToInboxIcon />}
-              // className="btn" 
-              type="submit" >
+              // className="btn"
+              type="submit"
+            >
               Submit
             </Button>
           </div>

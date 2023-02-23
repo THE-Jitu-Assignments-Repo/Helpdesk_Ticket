@@ -1,4 +1,4 @@
-.all-T{
+.all-T {
   padding: 10px;
 }
 
@@ -108,11 +108,9 @@
   /* border: 2px solid red; */
   width: 60%;
   backdrop-filter: blur(10px);
-box-shadow:
-  6.7px 2.7px 20px rgba(0, 0, 0, 0.06),
-  22.3px 8.9px 67.2px rgba(0, 0, 0, 0.035),
-  100px 40px 301px rgba(0, 0, 0, 0.024)
-;
+  box-shadow: 6.7px 2.7px 20px rgba(0, 0, 0, 0.06),
+    22.3px 8.9px 67.2px rgba(0, 0, 0, 0.035),
+    100px 40px 301px rgba(0, 0, 0, 0.024);
 }
 
 .ticket--header {
@@ -121,16 +119,16 @@ box-shadow:
   justify-content: space-between;
   padding: 30px;
 }
-.ticket--content{
+.ticket--content {
   /* border: 2px solid red; */
   padding: 40px;
 }
-.new-btn{
+.new-btn {
   margin-bottom: 10px;
   gap: 5px;
 }
 
-.status--new{
+.status--new {
   display: flex;
   gap: 5px;
   font-size: 18px;
@@ -138,7 +136,6 @@ box-shadow:
 }
 
 .footer {
-  
   /* display: flex; */
   /* border: 2px solid red; */
   padding: 40px;
@@ -148,9 +145,8 @@ box-shadow:
   text-align: center;
 }
 
-
-.btn-download{
-    padding: 5px 10px;
+.btn-download {
+  padding: 5px 10px;
   border: 1px solid #000;
   border-radius: 5px;
   background: #000;
@@ -167,8 +163,7 @@ box-shadow:
   transform: scale(0.98);
 }
 
-
-.button-fix{
+.button-fix {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,32 +171,49 @@ box-shadow:
   /* border: 2px solid red; */
   margin-bottom: 15px;
 }
-.del{
+.del {
   padding-left: 5px;
   text-align: center;
 }
 
-.btn-del{
+.btn-del {
   background-color: rgb(76, 79, 81);
   outline: none;
   border: none;
   margin: 5px;
 }
-.btn-del:hover{
-  content: 'delete';
+.btn-del:hover {
+  content: "delete";
 }
 
-.main--ticket--div{
+.main--ticket--div {
   padding-left: 20px;
 }
-.breadcrumb--tickets{
-    padding-left: 12px;
-    /* border: 2px solid red; */
+.breadcrumb--tickets {
+  padding-left: 12px;
+  /* border: 2px solid red; */
 }
 
 @media print {
+  body {
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+  }
   .hidden-print,
-    .hidden-print * {
-        display: none !important;
-    }
+  .hidden-print * {
+    display: none !important;
+  }
+  .ticket--new {
+    box-shadow: none;
+    width: fit-content;
+    font-family: "Courier New", Courier, monospace;
+  }
+  .ticket--header {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
 }
