@@ -209,7 +209,7 @@ function SingleTicket() {
                 variant="contained"
                 color="inherit"
                 size="small"
-                className="new-btn"
+                className="new-btn hidden-print"
                 onClick={openModal}
                 startIcon={<InsertCommentSharpIcon />}
               >
@@ -260,7 +260,7 @@ function SingleTicket() {
         </section>
       </div>
 
-      <article className="footer">
+      <article className="footer hidden-print">
         <p>Click this button to print your ticket...</p>
         <button className="btn-download hidden-print" onClick={printSection}>
           Print Ticket
