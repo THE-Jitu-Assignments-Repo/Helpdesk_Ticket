@@ -1,0 +1,23 @@
+@media print {
+  body {
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+  }
+  .hidden-print,
+  .hidden-print * {
+    display: none !important;
+  }
+  .ticket--new {
+    box-shadow: none;
+    width: fit-content;
+    font-family: "Courier New", Courier, monospace;
+  }
+  .ticket--header {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
+}

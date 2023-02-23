@@ -164,6 +164,8 @@ function SingleTicket() {
       </div>
 
       <div className="ticket--new" ref={printRef} id="divid">
+
+
         <div className="ticket--header">
           {/* <Back url="/tickets" className="back" /> */}
           <h2>
@@ -220,7 +222,7 @@ function SingleTicket() {
             </div>
 
             {notes.map((note) => {
-              return <NoteCard key={note._id} note={note} />;
+              return <NoteCard key={note._id} note={note} className='hidden-print'/>;
             })}
           </section>
           <div className="button-fix">

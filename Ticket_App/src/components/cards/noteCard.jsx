@@ -7,20 +7,20 @@ function NoteCard({ note }) {
   return (
     <>
       <div
-        className="note"
+        className="note hidden-print"
         style={{
           backgroundColor: note.isStaff ? "rgba(0,0,0,0.7)" : "#fff",
           color: note.isStaff ? "#fff" : "#000",
         }}
       >
-        <Avatar email={note.isStaff ? "Staff" : user.name}  co={note.isStaff? " ": "grey"}/>
+        <Avatar email={note.isStaff ? "Staff" : user.name}  co={note.isStaff? " ": "grey"} className='hidden-print'/>
         <section>
-          <div className="note--header">
+          <div className="note--header hidden-print">
             <h4>
               Note from{" "}
               {note.isStaff ? <span>Staff</span> : <span>{user.name} </span>}
             </h4>
-            <div className="note-date">
+            <div className="note-date hidden-print">
               {new Date(note.createdAt).toLocaleString("en-US", {
                 day: "numeric",
                 month: "short",
@@ -30,7 +30,7 @@ function NoteCard({ note }) {
               })}
             </div>
           </div>
-          <p>{note.text}</p>
+          <p className="hidden-print">{note.text}</p>
         </section>
       </div>
     </>
