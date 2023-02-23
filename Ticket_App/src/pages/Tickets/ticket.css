@@ -199,4 +199,9 @@ box-shadow:
     /* border: 2px solid red; */
 }
 
-
+@media print {
+  .hidden-print,
+    .hidden-print * {
+        display: none !important;
+    }
+}
