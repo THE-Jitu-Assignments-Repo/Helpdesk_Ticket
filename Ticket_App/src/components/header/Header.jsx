@@ -31,7 +31,7 @@ useEffect(() => {
   }, [dispatch]);
 
   return (
-    <div className="header">
+    <div className="header hidden-print">
       <div className="header_tag">
         <Link to="/" style={{display: 'flex', gap:'5'}}>
           <h1>HelpDesk</h1>
