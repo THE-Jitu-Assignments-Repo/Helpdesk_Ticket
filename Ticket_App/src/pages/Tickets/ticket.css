@@ -191,7 +191,13 @@
 }
 .breadcrumb--tickets {
   padding-left: 12px;
+}
+.ticket--body{
   /* border: 2px solid red; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media print {

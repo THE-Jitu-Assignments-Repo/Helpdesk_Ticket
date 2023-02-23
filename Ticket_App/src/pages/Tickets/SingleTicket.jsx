@@ -191,13 +191,15 @@ function SingleTicket() {
         </div>
         <section className="ticket--content">
           <div className="ticket--body">
-            <span>
+            <span className="details--p">
               <h3>TIcket ID:</h3> {ticket._id}
             </span>
-            <span>
+            <hr />
+            <span  className="details--p">
               <h3>Date Submitted: </h3>
               {new Date(ticket.createdAt).toLocaleString("en-US")}
             </span>
+            <hr />
           </div>
           <div className="ticket-desc">
             <h3>Description of the issue</h3>
