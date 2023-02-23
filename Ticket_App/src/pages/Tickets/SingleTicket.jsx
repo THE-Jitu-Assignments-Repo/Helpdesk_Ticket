@@ -64,17 +64,17 @@ function SingleTicket() {
   // window.print(printRef.current);
   const printSection = (e) => {
     e.preventDefault();
-    let mywindow = window.open("", "PRINT", "height=400,width=600");
+    // let mywindow = window.open("", "PRINT", "height=400,width=600");
 
-    mywindow.document.write(document.getElementById("divid").innerHTML);
+    // mywindow.document.write(document.getElementById("divid").innerHTML);
 
-    mywindow.document.close(); // necessary for IE >= 10
-    mywindow.focus(); // necessary for IE >= 10*/
+    // mywindow.document.close(); // necessary for IE >= 10
+    // mywindow.focus(); // necessary for IE >= 10*/
 
-    mywindow.print();
-    mywindow.close();
+    window.print();
+    // mywindow.close();
 
-    return true;
+    // return true;
   };
 
   const { ticketID } = useParams();
@@ -262,7 +262,7 @@ function SingleTicket() {
 
       <article className="footer">
         <p>Click this button to print your ticket...</p>
-        <button className="btn-download" onClick={printSection}>
+        <button className="btn-download hidden-print" onClick={printSection}>
           Print Ticket
         </button>
       </article>
