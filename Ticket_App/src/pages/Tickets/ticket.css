@@ -199,7 +199,9 @@
   flex-direction: column;
   gap: 20px;
 }
-
+.qrcode{
+  display: none;
+}
 @media print {
   body {
     margin: 0;
@@ -221,5 +223,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 30px;
+  }
+  .qrcode{
+    display: block;
+    margin: 0 auto;
+    /* border: 2px solid red; */
+    /* width: 80%; */
   }
 }

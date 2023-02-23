@@ -41,6 +41,7 @@ import SentimentDissatisfiedSharpIcon from "@mui/icons-material/SentimentDissati
 import InsertCommentSharpIcon from "@mui/icons-material/InsertCommentSharp";
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 import Alert from "@mui/material/Alert";
+import {QRCodeCanvas} from 'qrcode.react';
 
 function handleClick(event) {
   event.preventDefault();
@@ -206,6 +207,7 @@ function SingleTicket() {
             <p>{ticket.description}</p>
           </div>
           <section>
+            <QRCodeCanvas value='https://helpdesk-t.netlify.app/' size={180} className="qrcode"/>,
             <div style={{ marginBottom: "20px" }}>
               {ticket.status !== "close" && (
                 <Button
