@@ -207,7 +207,9 @@ function SingleTicket() {
             <p>{ticket.description}</p>
           </div>
           <section>
-            <QRCodeCanvas value='https://helpdesk-t.netlify.app/' size={180} className="qrcode"/>,
+            <QRCodeCanvas value='https://helpdesk-t.netlify.app/' size={180} className="qrcode"/>
+
+            <p className="qrcode" style={{textAlign: 'center', marginTop: '10px'}}>THANK YOU FOR BELIEVING AND TRUSTING US TO SERVE YOU.</p>
             <div style={{ marginBottom: "20px" }}>
               {ticket.status !== "close" && (
                 <Button
