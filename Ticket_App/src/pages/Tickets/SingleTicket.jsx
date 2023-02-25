@@ -207,6 +207,7 @@ function SingleTicket() {
             <p>{ticket.description}</p>
           </div>
           <section>
+            {/* qrcode generate when print is clicked */}
             <QRCodeCanvas value='https://helpdesk-t.netlify.app/' size={180} className="qrcode"/>
 
             <p className="qrcode" style={{textAlign: 'center', marginTop: '10px'}}>THANK YOU FOR BELIEVING AND TRUSTING US TO SERVE YOU.</p>
